@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'MediBook',
         'USER': 'admin',
         'PASSWORD': 'password',
-        'HOST': 'ec2-52-41-78-184.us-west-2.compute.amazonaws.com',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
