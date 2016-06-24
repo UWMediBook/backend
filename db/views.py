@@ -8,6 +8,7 @@ from db.serializers import *
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from django.views.decorators.http import require_GET, require_POST
+from datetime import datetime
 
 
 def index(request):
@@ -27,11 +28,21 @@ def users(request):
 
         return HttpResponse(serialized_json, content_type="application/json")
     elif request.method == "POST":
-        # TODO: implement this
-        query = User.objects.all()
-        serialized_json = serializers.serialize("json", query)
+        request_params = request.POST
+        first_name = request_params.get("first_name", "")
+        last_name = request_params.get("last_name", "")
+        address = request_params.get("address", "")
+        gender = request_params.get("gender", "N")
+        birthday = request_params.get("birthday", datetime.now())
+        email = request_params.get("email", "")
+        password = request_params.get("last_name", "wordpass")
+        healthcard = request_params.get("healthcard", "")
+        doctor_id = request_params.get("doctor_id", 1)
+        user = User(first_name=first_name, last_name=last_name, address=address, gender=gender, birthday=birthday,
+                    email=email, password=password, healthcard=healthcard, doctor=doctor_id)
+        user.save()
 
-        return HttpResponse(serialized_json, content_type="application/json")
+        return HttpResponse(DjangoJSONEncoder().default(user), content_type="application/json")
     elif request.method == "PUT":
         # TODO: implement this
         query = User.objects.all()
