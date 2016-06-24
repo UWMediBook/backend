@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import viewsets
-
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from db.models import *
 from db.serializers import *
 
@@ -10,9 +11,16 @@ def index(request):
     return HttpResponse("<h2>shit's working</h2>")
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(APIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        users = [user for user in User.objects.all()]
+        return Response(users)
 
 
 class AllergyViewSet(viewsets.ModelViewSet):
