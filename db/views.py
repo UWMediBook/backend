@@ -15,10 +15,10 @@ def index(request):
 
 def users(request):
     query = User.objects.all()
-    request_params = request.GET.items()
-    for k, v in request_params:
-        query = query.filter(k=v)
-    data = serializers.serialize("json", query)
+    # request_params = request.GET.items()
+    # for k, v in request_params:
+    #     query = query.filter(k=v)
+    serialized_json = serializers.serialize("json", query)
     # users = User.objects.all()
     # response = []
     # for user in users:
@@ -27,7 +27,7 @@ def users(request):
     #         first_name=user.first_name
     #     )
     #     response.append(user_dict)
-    return JsonResponse(data=DjangoJSONEncoder().default(o=query.execute()))
+    return JsonResponse(data=DjangoJSONEncoder().default(o=serialized_json))
 
 
 class UserViewSet(viewsets.ModelViewSet):
