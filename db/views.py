@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from db.models import *
 from db.serializers import *
 from django.core import serializers
+from django.core.serializers.json import DjangoJSONEncoder
 
 
 def index(request):
@@ -26,7 +27,7 @@ def users(request):
     #         first_name=user.first_name
     #     )
     #     response.append(user_dict)
-    return JsonResponse(data=data, safe=False)
+    return JsonResponse(data=DjangoJSONEncoder().default(o=query.execute()))
 
 
 class UserViewSet(viewsets.ModelViewSet):
