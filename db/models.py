@@ -29,8 +29,8 @@ class user(models.Model):
 
 class emergencyContact(models.Model):
     id = models.CharField(max_length=10, primary_key=True)
-    user_id = models.ForeignKey(user.id, on_delete=models.CASCADE, related_name="emergency_contact",
-                             related_query_name="emergency_contact")
+    user_id = models.ForeignKey(user, on_delete=models.CASCADE, related_name="emergency_contact",
+                                related_query_name="emergency_contact")
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     phone_number = models.CharField(max_length=15)
