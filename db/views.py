@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from db.models import *
 from db.serializers import *
+from django.core import serializers
 
 
 def index(request):
@@ -12,24 +13,21 @@ def index(request):
 
 
 def users(request):
-    users = User.objects.all()
-    response = []
-    for user in users:
-        user_dict = dict(
-            id=user.id,
-            first_name=user.first_name
-        )
-        response.append(user_dict)
-    return JsonResponse(data=response, safe=False)
+    data = serializers.serialize("json", User.objects.all())
+    # users = User.objects.all()
+    # response = []
+    # for user in users:
+    #     user_dict = dict(
+    #         id=user.id,
+    #         first_name=user.first_name
+    #     )
+    #     response.append(user_dict)
+    return JsonResponse(data=data, safe=False)
 
 
-class UserAPIView(APIView):
-    def get(self, request, format=None):
-        """
-        Return a list of all users.
-        """
-        users = [dict(id=user.id, first_name=user.first_name) for user in User.objects.all()]
-        return Response(users)
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 class AllergyViewSet(viewsets.ModelViewSet):
