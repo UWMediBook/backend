@@ -9,12 +9,13 @@ from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from django.views.decorators.http import require_GET, require_POST
 from datetime import datetime
+from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
     return HttpResponse("<h2>shit's working</h2>")
 
-
+@csrf_exempt
 def users(request):
     if request.method == "GET":
         query = User.objects.all()
