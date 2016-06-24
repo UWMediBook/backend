@@ -13,7 +13,11 @@ def index(request):
 
 
 def users(request):
-    data = serializers.serialize("json", User.objects.all())
+    query = User.objects.all()
+    request_params = request.GET.items()
+    for k, v in request_params:
+        query = query.filter(k=v)
+    data = serializers.serialize("json", query)
     # users = User.objects.all()
     # response = []
     # for user in users:
