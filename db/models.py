@@ -4,8 +4,8 @@ from django.db import models
 # Create your models here.
 
 class user(models.Model):
-    id = models.CharField(max_length=10, primary_key=True, unique=True)
-    doctor_id = models.ForeignKey('primaryDoctor', on_delete=models.CASCADE)
+    id = models.AutoField(max_length=10, primary_key=True, unique=True)
+    doctor = models.ForeignKey('primaryDoctor', on_delete=models.CASCADE)
     # ALLERGY_ID = models.ForeignKey('allergy', on_delete=models.CASCADE)
     # SURGERY_ID = models.ForeignKey('pastOperation', on_delete=models.CASCADE)
     # VISIT_ID = models.ForeignKey('pastVisit', on_delete=models.CASCADE)
@@ -29,7 +29,8 @@ class user(models.Model):
 
 class emergencyContact(models.Model):
     id = models.CharField(max_length=10, primary_key=True)
-    user_id = models.ForeignKey('user', on_delete=models.CASCADE)
+    user_id = models.ForeignKey(user.id, on_delete=models.CASCADE, related_name="emergency_contact",
+                             related_query_name="emergency_contact")
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     phone_number = models.CharField(max_length=15)
@@ -39,7 +40,7 @@ class emergencyContact(models.Model):
 
 
 class allergy(models.Model):
-    user_id = models.ForeignKey('user', on_delete=models.CASCADE)
+    user = models.ForeignKey('user', on_delete=models.CASCADE)
     id = models.CharField(max_length=10, primary_key=True)
     allergy = models.TextField(max_length=255)
     created_at = models.DateField(null=True, auto_now_add=True)
