@@ -21,7 +21,7 @@ class User(models.Model):
         ('F', 'Female'),
         ('N', 'N/A')
     )
-    gender = models.CharField(max_length=1, choices=genders)
+    gender = models.CharField(max_length=1, choices=genders, default="N")
     birthday = models.DateField()
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
@@ -33,10 +33,10 @@ class User(models.Model):
 class EmergencyContact(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_contacts")
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    phone_number = models.CharField(max_length=15)
-    relationship = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=30, null=True)
+    last_name = models.CharField(max_length=30, null=True)
+    phone_number = models.CharField(max_length=15, default="")
+    relationship = models.CharField(max_length=30, default="")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
@@ -44,12 +44,12 @@ class EmergencyContact(models.Model):
 class Allergy(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_allergies")
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, default="")
     severity_choices = (
         ('S', 'Severe'),
         ('M', 'Mild'),
     )
-    severity = models.CharField(max_length=1, choices=severity_choices)
+    severity = models.CharField(max_length=1, choices=severity_choices, default="M")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
@@ -58,8 +58,8 @@ class Prescription(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_prescriptions")
     doctor = models.ForeignKey('PrimaryDoctor', on_delete=models.CASCADE, related_name="doctor_prescriptions")
-    name = models.CharField(max_length=255)
-    dosage = models.TextField(null=True)
+    name = models.CharField(max_length=255, default="")
+    dosage = models.TextField(default="")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
@@ -67,7 +67,7 @@ class Prescription(models.Model):
 class Operation(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_operations")
-    operation = models.TextField()
+    operation = models.TextField(default="")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
@@ -75,7 +75,7 @@ class Operation(models.Model):
 class Visit(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_visits")
-    visit = models.TextField()
+    visit = models.TextField(default="")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
@@ -87,7 +87,7 @@ class DoctorNote(models.Model):
     visit = models.ForeignKey('Visit', on_delete=models.CASCADE, related_name="visit_notes", null=True)
     operation = models.ForeignKey('Operation', on_delete=models.CASCADE, related_name="operation_notes", null=True)
     allergy = models.ForeignKey('Allergy', on_delete=models.CASCADE, related_name="allergy_notes", null=True)
-    note = models.TextField()
+    note = models.TextField(default="")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
