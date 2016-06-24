@@ -1,6 +1,7 @@
 from django.conf.urls import url, include, patterns
 from rest_framework import routers
-from db.views import mainViewSet, allergyViewSet, pastVisitViewSet, pastOperationViewSet, doctorNoteViewSet, prescriptionViewSet, emergencyContactViewSet, primaryDoctorViewSet, allergyViewSet
+from db.views import mainViewSet, allergyViewSet, pastVisitViewSet, pastOperationViewSet, doctorNoteViewSet, \
+    prescriptionViewSet, emergencyContactViewSet, primaryDoctorViewSet, allergyViewSet
 
 from . import views
 
