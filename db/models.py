@@ -12,7 +12,7 @@ class PrimaryDoctor(models.Model):
 
 class User(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
-    doctor = models.ForeignKey('PrimaryDoctor', on_delete=models.CASCADE, related_name="users")
+    doctor = models.ForeignKey('PrimaryDoctor', on_delete=models.CASCADE, related_name="doctor_users")
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     address = models.CharField(max_length=200)
@@ -32,7 +32,7 @@ class User(models.Model):
 
 class EmergencyContact(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
-    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="emergency_contacts")
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_contacts")
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     phone_number = models.CharField(max_length=15)
@@ -43,7 +43,7 @@ class EmergencyContact(models.Model):
 
 class Allergy(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
-    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="emergency_contacts")
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_allergies")
     name = models.CharField(max_length=255)
     severity_choices = (
         ('S', 'Severe'),
@@ -56,18 +56,17 @@ class Allergy(models.Model):
 
 class Prescription(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
-    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="emergency_contacts")
-    doctor = models.ForeignKey('PrimaryDoctor', on_delete=models.CASCADE, related_name="prescriptions")
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_prescriptions")
+    doctor = models.ForeignKey('PrimaryDoctor', on_delete=models.CASCADE, related_name="doctor_prescriptions")
     name = models.CharField(max_length=255)
     dosage = models.TextField(null=True)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
 
-
 class Operation(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
-    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="emergency_contacts")
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_operations")
     operation = models.TextField()
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
@@ -75,7 +74,7 @@ class Operation(models.Model):
 
 class Visit(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
-    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="emergency_contacts")
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_visits")
     visit = models.TextField()
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
@@ -83,11 +82,11 @@ class Visit(models.Model):
 
 class DoctorNote(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
-    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="emergency_contacts")
-    prescription = models.ForeignKey('Prescription', on_delete=models.CASCADE, related_name="notes")
-    visit = models.ForeignKey('Visit', on_delete=models.CASCADE, related_name="notes")
-    operation = models.ForeignKey('Operation', on_delete=models.CASCADE, related_name="notes")
-    allergy = models.ForeignKey('Allergy', on_delete=models.CASCADE, related_name="notes")
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_notes", null=True)
+    prescription = models.ForeignKey('Prescription', on_delete=models.CASCADE, related_name="prescription_notes", null=True)
+    visit = models.ForeignKey('Visit', on_delete=models.CASCADE, related_name="visit_notes", null=True)
+    operation = models.ForeignKey('Operation', on_delete=models.CASCADE, related_name="operation_notes", null=True)
+    allergy = models.ForeignKey('Allergy', on_delete=models.CASCADE, related_name="allergy_notes", null=True)
     note = models.TextField()
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
