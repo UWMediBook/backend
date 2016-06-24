@@ -2,9 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import viewsets
 
-from db.models import user, allergy, pastVisit, pastOperation, doctorNote, prescription, emergencyContact, primaryDoctor
-from db.serializers import userSerializer, pastVisitSerializer, pastOperationSerializer, doctorNoteSerializer, \
-    prescriptionSerializer, emergencyContactSerializer, primaryDoctorSerializer, allergySerializer
+from db.models import *
+from db.serializers import *
 
 
 def index(request):
@@ -12,40 +11,40 @@ def index(request):
 
 
 class mainViewSet(viewsets.ModelViewSet):
-    queryset = user.objects.all()
+    queryset = User.objects.all()
     serializer_class = userSerializer
 
 
 class allergyViewSet(viewsets.ModelViewSet):
-    queryset = allergy.objects.all()
+    queryset = Allergy.objects.all()
     serializer_class = allergySerializer
 
 
 class pastVisitViewSet(viewsets.ModelViewSet):
-    queryset = pastVisit.objects.all()
+    queryset = Visit.objects.all()
     serializer_class = pastVisitSerializer
 
 
 class pastOperationViewSet(viewsets.ModelViewSet):
-    queryset = pastOperation.objects.all()
+    queryset = Operation.objects.all()
     serializer_class = pastOperationSerializer
 
 
 class doctorNoteViewSet(viewsets.ModelViewSet):
-    queryset = doctorNote.objects.all()
+    queryset = DoctorNote.objects.all()
     serializer_class = doctorNoteSerializer
 
 
 class prescriptionViewSet(viewsets.ModelViewSet):
-    queryset = prescription.objects.all()
+    queryset = Prescription.objects.all()
     serializer_class = prescriptionSerializer
 
 
 class emergencyContactViewSet(viewsets.ModelViewSet):
-    queryset = emergencyContact.objects.all()
+    queryset = EmergencyContact.objects.all()
     serializer_class = emergencyContactSerializer
 
 
 class primaryDoctorViewSet(viewsets.ModelViewSet):
-    queryset = primaryDoctor.objects.all()
+    queryset = PrimaryDoctor.objects.all()
     serializer_class = primaryDoctorSerializer
