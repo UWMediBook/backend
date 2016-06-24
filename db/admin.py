@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from db.models import main
+from db.models import user
 from db.models import prescription
 from db.models import allergy
 from db.models import pastOperation
@@ -10,7 +10,7 @@ from db.models import primaryDoctor
 from db.models import doctorNote
 # Register your models here.
 
-admin.site.register(main)
+admin.site.register(user)
 admin.site.register(prescription)
 admin.site.register(allergy)
 admin.site.register(pastOperation)

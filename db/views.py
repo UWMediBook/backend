@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import viewsets
 
-from db.models import main, allergy, pastVisit, pastOperation, doctorNote, prescription, emergencyContact, primaryDoctor
-from db.serializers import mainSerializer, pastVisitSerializer, pastOperationSerializer, doctorNoteSerializer, \
+from db.models import user, allergy, pastVisit, pastOperation, doctorNote, prescription, emergencyContact, primaryDoctor
+from db.serializers import userSerializer, pastVisitSerializer, pastOperationSerializer, doctorNoteSerializer, \
     prescriptionSerializer, emergencyContactSerializer, primaryDoctorSerializer, allergySerializer
 
 
@@ -12,8 +12,8 @@ def index(request):
 
 
 class mainViewSet(viewsets.ModelViewSet):
-    queryset = main.objects.all()
-    serializer_class = mainSerializer
+    queryset = user.objects.all()
+    serializer_class = userSerializer
 
 
 class allergyViewSet(viewsets.ModelViewSet):

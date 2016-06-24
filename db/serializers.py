@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from db.models import main, prescription, allergy, pastVisit, pastOperation, doctorNote, primaryDoctor, emergencyContact
+from db.models import user, prescription, allergy, pastVisit, pastOperation, doctorNote, primaryDoctor, emergencyContact
 
 
-class mainSerializer(serializers.ModelSerializer):
+class userSerializer(serializers.ModelSerializer):
     class Meta:
-        model = main
+        model = user
         fields = (
         'USER_ID', 'PRIMARY_ID', 'ALLERGY_ID', 'SURGERY_ID', 'VISIT_ID', 'PRESCRIPTION_ID', 'EC_ID', 'F_NAME', 'L_NAME',
         'ADDRESS', 'GENDERS', 'GENDER', 'BIRTHDAY', 'EMAIL', 'PASSWORD', 'HEALTHCARD_NUM', 'CREATED', 'UPDATED')
