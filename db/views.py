@@ -7,19 +7,33 @@ from db.models import *
 from db.serializers import *
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
+from django.views.decorators.http import require_GET, require_POST
 
 
 def index(request):
     return HttpResponse("<h2>shit's working</h2>")
 
 
+@require_GET()
 def users(request):
     query = User.objects.all()
     request_params = request.GET
+
     email = request_params.get("email", None)
     if email:
         query = query.filter(email=email)
+
     serialized_json = serializers.serialize("json", query)
+
+    return HttpResponse(serialized_json, content_type="application/json")
+
+
+@require_POST()
+def users(request):
+    query = User.objects.all()
+
+    serialized_json = serializers.serialize("json", query)
+
     return HttpResponse(serialized_json, content_type="application/json")
 
 
