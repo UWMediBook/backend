@@ -15,6 +15,7 @@ router.register(r'emergencycontacts', EmergencyContactViewSet)
 router.register(r'doctors', DoctorViewSet)
 
 urlpatterns = [
-    url(r'^users/$', UserViewSet.as_view()),
+    url(r'^get_users_api_view/$', UserAPIView.as_view()),
+    url(r'^users/$', views.users),
 ]
 urlpatterns += router.urls

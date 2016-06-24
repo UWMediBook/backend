@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -11,13 +11,24 @@ def index(request):
     return HttpResponse("<h2>shit's working</h2>")
 
 
-class UserViewSet(APIView):
+def users(request):
+    users = User.objects.all()
+    response = []
+    for user in users:
+        user_dict = dict(
+            id=user.id,
+            first_name=user.first_name
+        )
+        response.append(user_dict)
+    return JsonResponse(data=response)
 
+
+class UserAPIView(APIView):
     def get(self, request, format=None):
         """
         Return a list of all users.
         """
-        users = [user for user in User.objects.all()]
+        users = [dict(id=user.id, first_name=user.first_name) for user in User.objects.all()]
         return Response(users)
 
 
