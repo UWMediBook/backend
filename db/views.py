@@ -14,27 +14,30 @@ def index(request):
     return HttpResponse("<h2>shit's working</h2>")
 
 
-@require_GET()
 def users(request):
-    query = User.objects.all()
-    request_params = request.GET
+    if request.method == "GET":
+        query = User.objects.all()
+        request_params = request.GET
 
-    email = request_params.get("email", None)
-    if email:
-        query = query.filter(email=email)
+        email = request_params.get("email", None)
+        if email:
+            query = query.filter(email=email)
 
-    serialized_json = serializers.serialize("json", query)
+        serialized_json = serializers.serialize("json", query)
 
-    return HttpResponse(serialized_json, content_type="application/json")
+        return HttpResponse(serialized_json, content_type="application/json")
+    elif request.method == "POST":
+        # TODO: implement this
+        query = User.objects.all()
+        serialized_json = serializers.serialize("json", query)
 
+        return HttpResponse(serialized_json, content_type="application/json")
+    elif request.method == "PUT":
+        # TODO: implement this
+        query = User.objects.all()
+        serialized_json = serializers.serialize("json", query)
 
-@require_POST()
-def users(request):
-    query = User.objects.all()
-
-    serialized_json = serializers.serialize("json", query)
-
-    return HttpResponse(serialized_json, content_type="application/json")
+        return HttpResponse(serialized_json, content_type="application/json")
 
 
 class UserViewSet(viewsets.ModelViewSet):
