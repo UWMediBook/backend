@@ -20,7 +20,7 @@ def users(request):
             first_name=user.first_name
         )
         response.append(user_dict)
-    return JsonResponse(data=response)
+    return JsonResponse(data=response, safe=False)
 
 
 class UserAPIView(APIView):
