@@ -21,7 +21,7 @@ class User(models.Model):
         ('F', 'Female'),
         ('N', 'N/A')
     )
-    gender = models.CharField(max_length=1, choices=genders, default=genders[2])
+    gender = models.CharField(max_length=1, choices=genders, default='N')
     birthday = models.DateField()
     email = models.CharField(max_length=255, default="")
     password = models.CharField(max_length=255, default="wordpass")
@@ -49,7 +49,7 @@ class Allergy(models.Model):
         ('S', 'Severe'),
         ('M', 'Mild'),
     )
-    severity = models.CharField(max_length=1, choices=severity_choices, default=severity_choices[1])
+    severity = models.CharField(max_length=1, choices=severity_choices, default='M')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
