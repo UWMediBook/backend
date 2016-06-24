@@ -12,8 +12,6 @@ def index(request):
 
 
 class UserViewSet(APIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
 
     def get(self, request, format=None):
         """
