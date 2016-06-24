@@ -10,41 +10,41 @@ def index(request):
     return HttpResponse("<h2>shit's working</h2>")
 
 
-class mainViewSet(viewsets.ModelViewSet):
+class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
-    serializer_class = userSerializer
+    serializer_class = UserSerializer
 
 
-class allergyViewSet(viewsets.ModelViewSet):
+class AllergyViewSet(viewsets.ModelViewSet):
     queryset = Allergy.objects.all()
-    serializer_class = allergySerializer
+    serializer_class = AllergySerializer
 
 
-class pastVisitViewSet(viewsets.ModelViewSet):
+class VisitViewSet(viewsets.ModelViewSet):
     queryset = Visit.objects.all()
-    serializer_class = pastVisitSerializer
+    serializer_class = VisitSerializer
 
 
-class pastOperationViewSet(viewsets.ModelViewSet):
+class OperationViewSet(viewsets.ModelViewSet):
     queryset = Operation.objects.all()
-    serializer_class = pastOperationSerializer
+    serializer_class = OperationSerializer
 
 
-class doctorNoteViewSet(viewsets.ModelViewSet):
+class DoctorNoteViewSet(viewsets.ModelViewSet):
     queryset = DoctorNote.objects.all()
-    serializer_class = doctorNoteSerializer
+    serializer_class = DoctorNoteSerializer
 
 
-class prescriptionViewSet(viewsets.ModelViewSet):
+class PrescriptionViewSet(viewsets.ModelViewSet):
     queryset = Prescription.objects.all()
-    serializer_class = prescriptionSerializer
+    serializer_class = PrescriptionSerializer
 
 
-class emergencyContactViewSet(viewsets.ModelViewSet):
+class EmergencyContactViewSet(viewsets.ModelViewSet):
     queryset = EmergencyContact.objects.all()
-    serializer_class = emergencyContactSerializer
+    serializer_class = EmergencyContactSerializer
 
 
-class primaryDoctorViewSet(viewsets.ModelViewSet):
-    queryset = PrimaryDoctor.objects.all()
-    serializer_class = primaryDoctorSerializer
+class DoctorViewSet(viewsets.ModelViewSet):
+    queryset = Doctor.objects.all()
+    serializer_class = DoctorSerializer

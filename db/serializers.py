@@ -2,49 +2,49 @@ from rest_framework import serializers
 from db.models import *
 
 
-class userSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
 
 
-class emergencyContactSerializer(serializers.ModelSerializer):
+class EmergencyContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmergencyContact
         fields = '__all__'
 
 
-class allergySerializer(serializers.ModelSerializer):
+class AllergySerializer(serializers.ModelSerializer):
     class Meta:
         model = Allergy
         fields = '__all__'
 
 
-class prescriptionSerializer(serializers.ModelSerializer):
+class PrescriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prescription
         fields = '__all__'
 
 
-class pastOperationSerializer(serializers.ModelSerializer):
+class OperationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Operation
         fields = '__all__'
 
 
-class pastVisitSerializer(serializers.ModelSerializer):
+class VisitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Visit
         fields = '__all__'
 
 
-class doctorNoteSerializer(serializers.ModelSerializer):
+class DoctorNoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = DoctorNote
         fields = '__all__'
 
 
-class primaryDoctorSerializer(serializers.ModelSerializer):
+class DoctorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PrimaryDoctor
+        model = Doctor
         fields = '__all__'

@@ -2,7 +2,7 @@ from django.db import models
 
 
 # Create your models here.
-class PrimaryDoctor(models.Model):
+class Doctor(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
@@ -12,7 +12,7 @@ class PrimaryDoctor(models.Model):
 
 class User(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
-    doctor = models.ForeignKey('PrimaryDoctor', on_delete=models.CASCADE, related_name="doctor_users")
+    doctor = models.ForeignKey('Doctor', on_delete=models.CASCADE, related_name="doctor_users")
     first_name = models.CharField(max_length=30, default="")
     last_name = models.CharField(max_length=30, default="")
     address = models.CharField(max_length=200, default="")
@@ -57,7 +57,7 @@ class Allergy(models.Model):
 class Prescription(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_prescriptions")
-    doctor = models.ForeignKey('PrimaryDoctor', on_delete=models.CASCADE, related_name="doctor_prescriptions")
+    doctor = models.ForeignKey('Doctor', on_delete=models.CASCADE, related_name="doctor_prescriptions")
     name = models.CharField(max_length=255, default="")
     dosage = models.TextField(default="")
     created_at = models.DateTimeField(auto_now_add=True)
