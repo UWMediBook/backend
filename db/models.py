@@ -1,5 +1,5 @@
 from django.db import models
-
+import time
 
 # Create your models here.
 class Doctor(models.Model):
@@ -8,6 +8,15 @@ class Doctor(models.Model):
     last_name = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def to_dict(self):
+        return dict(
+            id=self.id,
+            first_name=self.first_name,
+            last_name=self.last_name,
+            created_at=time.mktime(self.created_at.timetuple()),
+            updated_at=time.mktime(self.updated_at.timetuple())
+        )
 
 
 class User(models.Model):
@@ -29,6 +38,19 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def to_dict(self):
+        return dict(
+            id=self.id,
+            first_name=self.first_name,
+            last_name=self.last_name,
+            address=self.address,
+            gender=self.gender,
+            birthday=time.mktime(self.birthday.timetuple()),
+            email=self.email,
+            password=self.password,
+            healthcard=self.healthcard,
+            doctor=self.doctor.to_dict()
+        )
 
 class EmergencyContact(models.Model):
     id = models.AutoField(primary_key=True, unique=True)

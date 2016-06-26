@@ -16,5 +16,7 @@ router.register(r'doctorviewset', DoctorViewSet)
 
 urlpatterns = [
     url(r'^users/$', views.users),
+    url(r'^doctors/$', views.doctors),
+
 ]
 urlpatterns += router.urls

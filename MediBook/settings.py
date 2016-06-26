@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = ')$uxm1qf8v3wgkyn(gyp_(x46&xmk2a&3s-h)7#1qto4dyvf#y'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -42,8 +40,8 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-	'DEFAULT_PERMISSION_CLASSES':('rest_framework.permissions.AllowAny',),
-	'PAGE_SIZE': 10
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
+    'PAGE_SIZE': 10
 }
 
 MIDDLEWARE_CLASSES = [
@@ -77,7 +75,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MediBook.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
@@ -91,8 +88,12 @@ DATABASES = {
         'PORT': '',
     }
 }
-
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': '/Users/kevinyang/code/medibook/backend/django.db',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -111,7 +112,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -124,7 +124,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
