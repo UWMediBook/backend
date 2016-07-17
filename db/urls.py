@@ -26,11 +26,11 @@ urlpatterns = [
     url(r'^allergies/$', views.allergies),
     url(r'^allergies/(?P<allergy_id>[0-9]+)/$', views.allergies_by_id),
     url(r'^prescriptions/$', views.prescriptions),
-    url(r'^prescriptions/(?P<prescription_id>[0-9]+)$', views.prescriptions_by_id),
+    url(r'^prescriptions/(?P<prescription_id>[0-9]+)/$', views.prescriptions_by_id),
     url(r'^operations/$', views.operations),
-    url(r'^operations/(?P<operation_id>[0-9]+)$', views.operations_by_id),
+    url(r'^operations/(?P<operation_id>[0-9]+)/$', views.operations_by_id),
     url(r'^visits/$', views.visits),
-    url(r'^visits/(?P<visit_id>[0-9]+)$', views.visits_by_id),
+    url(r'^visits/(?P<visit_id>[0-9]+)/$', views.visits_by_id),
     url(r'^doctor_notes/$', views.doctor_notes),
 
 ]
