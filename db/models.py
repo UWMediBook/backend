@@ -70,7 +70,7 @@ class EmergencyContact(models.Model):
     def to_dict(self):
         return dict(
             id=self.id,
-            user=self.user,
+            user=self.user.to_dict(),
             first_name=self.first_name,
             last_name=self.last_name,
             phone_number=self.phone_number,
