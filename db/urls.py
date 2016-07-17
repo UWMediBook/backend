@@ -15,14 +15,14 @@ router.register(r'emergencycontactviewset', EmergencyContactViewSet)
 router.register(r'doctorviewset', DoctorViewSet)
 
 urlpatterns = [
-    url(r'^users/$', views.Users.as_view()),
-    url(r'^doctors/$', views.Doctors.as_view()),
-    url(r'^emergency_contacts/$', views.EmergencyContacts.as_view()),
-    url(r'^allergies/$', views.Allergies.as_view()),
-    url(r'^prescriptions/$', views.Prescriptions.as_view()),
-    url(r'^operations/$', views.Operations.as_view()),
-    url(r'^visits/$', views.Visits.as_view()),
-    url(r'^doctor_notes/$', views.DoctorNotes.as_view()),
+    url(r'^users/$', views.users),
+    url(r'^doctors/$', views.doctors),
+    url(r'^emergency_contacts/$', views.emergency_contacts),
+    url(r'^allergies/$', views.allergies),
+    url(r'^prescriptions/$', views.prescriptions),
+    url(r'^operations/$', views.operations),
+    url(r'^visits/$', views.visits),
+    url(r'^doctor_notes/$', views.doctor_notes),
 
 ]
 urlpatterns += router.urls

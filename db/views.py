@@ -20,8 +20,8 @@ def index(request):
 
 
 @csrf_exempt
-class Users(APIView):
-    def get(self, request, format=None):
+def users(request):
+    if request.method == "GET":
         query = User.objects.all()
         request_params = request.GET
 
@@ -32,8 +32,7 @@ class Users(APIView):
         serialized_json = serializers.serialize("json", query)
 
         return HttpResponse(serialized_json, content_type="application/json")
-
-    def post(self, request, format=None):
+    elif request.method == "POST":
         request_params = json.loads(request.body)
         user_id = request_params.get("user_id", None)
         if not user_id:
@@ -78,8 +77,7 @@ class Users(APIView):
         user.save()
 
         return HttpResponse(json.dumps(user.to_dict()), content_type="application/json")
-
-    def put(self, request, format=None):
+    elif request.method == "PUT":
         request_params = json.loads(request.body)
         first_name = request_params.get("first_name", "")
         last_name = request_params.get("last_name", "")
@@ -103,18 +101,20 @@ class Users(APIView):
         user.save()
 
         return HttpResponse(json.dumps(user.to_dict()), content_type="application/json")
+    elif request.method == "DELETE":
+        # TODO: Implement this
+        return HttpResponse(None, content_type="application/json")
 
 
 @csrf_exempt
-class Doctors(APIView):
-    def get(self, request, format=None):
+def doctors(request):
+    if request.method == "GET":
         query = Doctor.objects.all()
 
         serialized_json = serializers.serialize("json", query)
 
         return HttpResponse(serialized_json, content_type="application/json")
-
-    def post(self, request, format=None):
+    elif request.method == "POST":
         request_params = json.loads(request.body)
         doctor_id = request_params.get("doctor_id", None)
         if not doctor_id:
@@ -134,8 +134,7 @@ class Doctors(APIView):
         doctor.save()
 
         return HttpResponse(json.dumps(doctor.to_dict()), content_type="application/json")
-
-    def put(self, request, format=None):
+    elif request.method == "PUT":
         request_params = json.loads(request.body)
 
         first_name = request_params.get("first_name", "")
@@ -145,17 +144,19 @@ class Doctors(APIView):
         doctor.save()
 
         return HttpResponse(json.dumps(doctor.to_dict()), content_type="application/json")
+    elif request.method == "DELETE":
+        # TODO: Implement this
+        return HttpResponse(None, content_type="application/json")
 
 
 @csrf_exempt
-class EmergencyContacts(APIView):
-    def get(self, request, format=None):
+def emergency_contacts(request):
+    if request.method == "GET":
         query = EmergencyContact.objects.all()
         serialized_json = serializers.serialize("json", query)
 
         return HttpResponse(serialized_json, content_type="application/json")
-
-    def post(self, request, format=None):
+    elif request.method == "POST":
         request_params = json.loads(request.body)
 
         contact_id = request_params.get("contact_id", None)
@@ -182,8 +183,7 @@ class EmergencyContacts(APIView):
         contact.save()
 
         return HttpResponse(json.dumps(contact.to_dict()), content_type="application/json")
-
-    def put(self, request, format=None):
+    elif request.method == "PUT":
         request_params = json.loads(request.body)
 
         user_id = request_params.get("user_id", None)
@@ -205,16 +205,35 @@ class EmergencyContacts(APIView):
         contact.save()
 
         return HttpResponse(json.dumps(contact.to_dict()), content_type="application/json")
+    elif request.method == "DELETE":
+        # TODO: Implement this
+        return HttpResponse(None, content_type="application/json")
 
 
 @csrf_exempt
-class Allergies(APIView):
-    def get(self, request, format=None):
+def allergies(request):
+    if request.method == "GET":
         query = Allergy.objects.all()
         serialized_json = serializers.serialize("json", query)
         return HttpResponse(serialized_json, content_type="application/json")
+    elif request.method == "POST":
+        request_params = json.loads(request.body)
+        user_id = request_params.get("user_id", None)
+        if not user_id:
+            raise Exception("Invalid user id")
 
-    def post(self, request, format=None):
+        user = User.objects.get(id=user_id)
+        if not user:
+            raise Exception("Invalid user")
+
+        name = request_params.get("name", "")
+        severity = request_params.get("severity", "M")
+
+        allergy = Allergy(user=user, name=name, severity=severity)
+        allergy.save()
+
+        return HttpResponse(json.dumps(allergy.to_dict()), content_type="application/json")
+    elif request.method == "PUT":
         request_params = json.loads(request.body)
         allergy_id = request_params.get("allergy_id", None)
         if not allergy_id:
@@ -232,36 +251,19 @@ class Allergies(APIView):
             allergy.severity = severity
 
         allergy.save()
-
         return HttpResponse(json.dumps(allergy.to_dict()), content_type="application/json")
-
-    def put(self, request, format=None):
-        request_params = json.loads(request.body)
-        user_id = request_params.get("user_id", None)
-        if not user_id:
-            raise Exception("Invalid user id")
-
-        user = User.objects.get(id=user_id)
-        if not user:
-            raise Exception("Invalid user")
-
-        name = request_params.get("name", "")
-        severity = request_params.get("severity", "M")
-
-        allergy = Allergy(user=user, name=name, severity=severity)
-        allergy.save()
-
-        return HttpResponse(json.dumps(allergy.to_dict()), content_type="application/json")
+    elif request.method == "DELETE":
+        # TODO: Implement this
+        return HttpResponse(None, content_type="application/json")
 
 
 @csrf_exempt
-class Prescriptions(APIView):
-    def get(self, request, format=None):
+def prescriptions(request):
+    if request.method == "GET":
         query = Prescription.objects.all()
         serialized_json = serializers.serialize("json", query)
         return HttpResponse(serialized_json, content_type="application/json")
-
-    def post(self, request, format=None):
+    elif request.method == "POST":
         request_params = json.loads(request.body)
 
         prescription_id = request_params.get("prescription_id", None)
@@ -280,8 +282,7 @@ class Prescriptions(APIView):
         prescription.save()
 
         return HttpResponse(json.dumps(prescription.to_dict()), content_type="application/json")
-
-    def put(self, request, format=None):
+    elif request.method == "PUT":
         request_params = json.loads(request.body)
         user_id = request_params.get("user_id", None)
         if not user_id:
@@ -304,16 +305,18 @@ class Prescriptions(APIView):
         prescription.save()
 
         return HttpResponse(json.dumps(prescription.to_dict()), content_type="application/json")
+    elif request.method == "DELETE":
+        # TODO: Implement this
+        return HttpResponse(None, content_type="application/json")
 
 
 @csrf_exempt
-class Operations(APIView):
-    def get(self, request, format=None):
+def operations(request):
+    if request.method == "GET":
         query = Operation.objects.all()
         serialized_json = serializers.serialize("json", query)
         return HttpResponse(serialized_json, content_type="application/json")
-
-    def post(self, request, format=None):
+    elif request.method == "POST":
         request_params = json.loads(request.body)
 
         operation_id = request_params.get("operation_id", None)
@@ -332,8 +335,7 @@ class Operations(APIView):
         operation.save()
 
         return HttpResponse(json.dumps(operation.to_dict()), content_type="application/json")
-
-    def put(self, request, format=None):
+    elif request.method == "PUT":
         request_params = json.loads(request.body)
         user_id = request_params.get("user_id", None)
         if not user_id:
@@ -348,16 +350,18 @@ class Operations(APIView):
         operation.save()
 
         return HttpResponse(json.dumps(operation.to_dict()), content_type="application/json")
+    elif request.method == "DELETE":
+        # TODO: Implement this
+        return HttpResponse(None, content_type="application/json")
 
 
 @csrf_exempt
-class Visits(APIView):
-    def get(self, request, format=None):
+def visits(request):
+    if request.method == "GET":
         query = Visit.objects.all()
         serialized_json = serializers.serialize("json", query)
         return HttpResponse(serialized_json, content_type="application/json")
-
-    def post(self, request, format=None):
+    elif request.method == "POST":
         request_params = json.loads(request.body)
 
         visit_id = request_params.get("visit_id", None)
@@ -373,8 +377,7 @@ class Visits(APIView):
         visit.save()
 
         return HttpResponse(json.dumps(visit.to_dict()), content_type="application/json")
-
-    def put(self, request, format=None):
+    elif request.method == "PUT":
         request_params = json.loads(request.body)
         user_id = request_params.get("user_id", None)
         if not user_id:
@@ -389,16 +392,18 @@ class Visits(APIView):
         visit.save()
 
         return HttpResponse(json.dumps(visit.to_dict()), content_type="application/json")
+    elif request.method == "DELETE":
+        # TODO: Implement this
+        return HttpResponse(None, content_type="application/json")
 
 
 @csrf_exempt
-class DoctorNotes(APIView):
-    def get(self, request, format=None):
+def doctor_notes(request):
+    if request.method == "GET":
         query = DoctorNote.objects.all()
         serialized_json = serializers.serialize("json", query)
         return HttpResponse(serialized_json, content_type="application/json")
-
-    def post(self, request, format=None):
+    elif request.method == "POST":
         request_params = json.loads(request.body)
         note_id = request_params.get("note_id", None)
 
@@ -415,8 +420,7 @@ class DoctorNotes(APIView):
         doctor_note.save()
 
         return HttpResponse(json.dumps(doctor_note.to_dict()), content_type="application/json")
-
-    def put(self, request, format=None):
+    elif request.method == "PUT":
         request_params = json.loads(request.body)
         doctor_id = request_params.get("doctor_id", None)
         if not doctor_id:
@@ -464,6 +468,9 @@ class DoctorNotes(APIView):
         doctor_note.save()
 
         return HttpResponse(json.dumps(doctor_note.to_dict()), content_type="application/json")
+    elif request.method == "DELETE":
+        # TODO: Implement this
+        return HttpResponse(None, content_type="application/json")
 
 
 """
