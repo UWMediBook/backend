@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseNotFound
+from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseNotFound, HttpResponseNotAllowed
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -13,10 +13,26 @@ from datetime import date
 import time
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.contrib.auth.hashers import BCryptPasswordHasher
 
 
-def index(request):
-    return HttpResponse("<h2>shit's working</h2>")
+@csrf_exempt
+def authenticate(request):
+    if request.method == "POST":
+        request_params = json.loads(request.body)
+        email = request_params.get("email", None)
+        password = request_params.get("password", None)
+        if not email or not password:
+            return HttpResponseBadRequest("Missing email or password")
+
+        user = User.objects.get(email=email)
+        if not user:
+            return HttpResponseNotFound("User does not exist")
+
+        if BCryptPasswordHasher().verify(password, user.password):
+            return HttpResponse("Security Token Authenticated")
+        else:
+            return HttpResponseNotAllowed("Invalid email/password")
 
 
 @csrf_exempt
@@ -32,11 +48,42 @@ def users(request):
         serialized_json = serializers.serialize("json", query)
 
         return HttpResponse(serialized_json, content_type="application/json")
+    elif request.method == "PUT":
+        request_params = json.loads(request.body)
+        first_name = request_params.get("first_name", "")
+        last_name = request_params.get("last_name", "")
+        address = request_params.get("address", "")
+        gender = request_params.get("gender", "N")
+        birthday = request_params.get("birthday", time.time())
+        birthday = datetime.fromtimestamp(birthday)
+        email = request_params.get("email", "")
+        password = request_params.get("password", "wordpass")
+        healthcard = request_params.get("healthcard", "")
+        doctor_id = request_params.get("doctor_id", None)
+        if not doctor_id:
+            return HttpResponseBadRequest("Empty Doctor ID")
+        doctor = Doctor.objects.get(id=doctor_id)
+        if not doctor:
+            return HttpResponseNotFound("Unable to find doctor")
+
+        user = User(first_name=first_name, last_name=last_name, address=address, gender=gender, birthday=birthday,
+                    email=email,
+                    password=BCryptPasswordHasher().encode(password=password, salt=BCryptPasswordHasher().salt()),
+                    healthcard=healthcard, doctor=doctor)
+        user.save()
+
+        return HttpResponse(json.dumps(user.to_dict()), content_type="application/json")
+
+
+@csrf_exempt
+def users_by_id(request, user_id):
+    if request.method == "GET":
+        user = User.objects.get(id=user_id)
+        if not user:
+            return HttpResponseNotFound("User not found")
+        return HttpResponse(json.dumps(user.to_dict()), content_type="application/json")
     elif request.method == "POST":
         request_params = json.loads(request.body)
-        user_id = request_params.get("user_id", None)
-        if not user_id:
-            return HttpResponseBadRequest("Invalid User ID")
         user = User.objects.get(id=user_id)
         if not user:
             return HttpResponseNotFound("Unable to find doctor")
@@ -45,7 +92,6 @@ def users(request):
         address = request_params.get("address", None)
         gender = request_params.get("gender", None)
         birthday = request_params.get("birthday", None)
-        # birthday = datetime.fromtimestamp(time.time())
         email = request_params.get("email", None)
         password = request_params.get("password", None)
         healthcard = request_params.get("healthcard", None)
@@ -77,63 +123,64 @@ def users(request):
         user.save()
 
         return HttpResponse(json.dumps(user.to_dict()), content_type="application/json")
-    elif request.method == "PUT":
-        request_params = json.loads(request.body)
-        first_name = request_params.get("first_name", "")
-        last_name = request_params.get("last_name", "")
-        address = request_params.get("address", "")
-        gender = request_params.get("gender", "N")
-        birthday = request_params.get("birthday", time.time())
-        birthday = datetime.fromtimestamp(birthday)
-        # birthday = datetime.fromtimestamp(time.time())
-        email = request_params.get("email", "")
-        password = request_params.get("password", "wordpass")
-        healthcard = request_params.get("healthcard", "")
-        doctor_id = request_params.get("doctor_id", None)
-        if not doctor_id:
-            return HttpResponseBadRequest("Empty Doctor ID")
-        doctor = Doctor.objects.get(id=doctor_id)
-        if not doctor:
-            return HttpResponseNotFound("Unable to find doctor")
 
-        user = User(first_name=first_name, last_name=last_name, address=address, gender=gender, birthday=birthday,
-                    email=email, password=password, healthcard=healthcard, doctor=doctor)
+
+@csrf_exempt
+def users_by_email(request, email):
+    if request.method == "GET":
+        user = User.objects.get(email=email)
+        if not user:
+            return HttpResponseNotFound("User not found")
+        return HttpResponse(json.dumps(user.to_dict()), content_type="application/json")
+    elif request.method == "POST":
+        request_params = json.loads(request.body)
+        user = User.objects.get(email=email)
+        if not user:
+            return HttpResponseNotFound("Unable to find doctor")
+        first_name = request_params.get("first_name", None)
+        last_name = request_params.get("last_name", None)
+        address = request_params.get("address", None)
+        gender = request_params.get("gender", None)
+        birthday = request_params.get("birthday", None)
+        email = request_params.get("email", None)
+        password = request_params.get("password", None)
+        healthcard = request_params.get("healthcard", None)
+        doctor_id = request_params.get("doctor_id", None)
+        doctor = None
+        if doctor_id:
+            doctor = Doctor.objects.get(id=doctor_id)
+            if not doctor:
+                return HttpResponseNotFound("Unable to find doctor")
+        if first_name:
+            user.first_name = first_name
+        if last_name:
+            user.last_name = last_name
+        if address:
+            user.address = address
+        if gender:
+            user.gender = gender
+        if birthday:
+            user.birthday = birthday
+        if email:
+            user.email = email
+        if password:
+            user.password = password
+        if healthcard:
+            user.healthcard = healthcard
+        if doctor:
+            user.doctor = doctor
+
         user.save()
 
         return HttpResponse(json.dumps(user.to_dict()), content_type="application/json")
-    elif request.method == "DELETE":
-        # TODO: Implement this
-        return HttpResponse(None, content_type="application/json")
 
 
 @csrf_exempt
 def doctors(request):
     if request.method == "GET":
         query = Doctor.objects.all()
-
         serialized_json = serializers.serialize("json", query)
-
         return HttpResponse(serialized_json, content_type="application/json")
-    elif request.method == "POST":
-        request_params = json.loads(request.body)
-        doctor_id = request_params.get("doctor_id", None)
-        if not doctor_id:
-            return HttpResponseBadRequest("Invalid Doctor ID")
-        doctor = Doctor.objects.get(id=doctor_id)
-        if not doctor:
-            return HttpResponseNotFound("Unable to find doctor")
-
-        first_name = request_params.get("first_name", None)
-        last_name = request_params.get("last_name", None)
-
-        if first_name:
-            doctor.first_name = first_name
-        if last_name:
-            doctor.last_name = last_name
-
-        doctor.save()
-
-        return HttpResponse(json.dumps(doctor.to_dict()), content_type="application/json")
     elif request.method == "PUT":
         request_params = json.loads(request.body)
 
@@ -144,9 +191,26 @@ def doctors(request):
         doctor.save()
 
         return HttpResponse(json.dumps(doctor.to_dict()), content_type="application/json")
-    elif request.method == "DELETE":
-        # TODO: Implement this
-        return HttpResponse(None, content_type="application/json")
+
+
+@csrf_exempt
+def doctors_by_id(request, doctor_id):
+    if request.method == "GET":
+        doctor = Doctor.objects.get(id=doctor_id)
+        return HttpResponse(json.dumps(doctor.to_dict()), content_type="application/json")
+    elif request.method == "POST":
+        request_params = json.loads(request.body)
+        doctor = Doctor.objects.get(id=doctor_id)
+        if not doctor:
+            return HttpResponseNotFound("Unable to find doctor")
+        first_name = request_params.get("first_name", None)
+        last_name = request_params.get("last_name", None)
+        if first_name:
+            doctor.first_name = first_name
+        if last_name:
+            doctor.last_name = last_name
+        doctor.save()
+        return HttpResponse(json.dumps(doctor.to_dict()), content_type="application/json")
 
 
 @csrf_exempt
@@ -156,33 +220,6 @@ def emergency_contacts(request):
         serialized_json = serializers.serialize("json", query)
 
         return HttpResponse(serialized_json, content_type="application/json")
-    elif request.method == "POST":
-        request_params = json.loads(request.body)
-
-        contact_id = request_params.get("contact_id", None)
-        if not contact_id:
-            raise Exception()
-        contact = EmergencyContact.objects.get(id=contact_id)
-        if not contact:
-            raise Exception()
-
-        first_name = request_params.get("first_name", None)
-        last_name = request_params.get("last_name", None)
-        phone_number = request_params.get("phone_number", None)
-        relationship = request_params.get("relationship", None)
-
-        if first_name:
-            contact.first_name = first_name
-        if last_name:
-            contact.last_name = last_name
-        if phone_number:
-            contact.phone_number = phone_number
-        if relationship:
-            contact.relationship = relationship
-
-        contact.save()
-
-        return HttpResponse(json.dumps(contact.to_dict()), content_type="application/json")
     elif request.method == "PUT":
         request_params = json.loads(request.body)
 
@@ -205,9 +242,38 @@ def emergency_contacts(request):
         contact.save()
 
         return HttpResponse(json.dumps(contact.to_dict()), content_type="application/json")
-    elif request.method == "DELETE":
-        # TODO: Implement this
-        return HttpResponse(None, content_type="application/json")
+
+
+@csrf_exempt
+def emergency_contacts_by_id(request, contact_id):
+    if request.method == "GET":
+        emergency_contact = EmergencyContact.objects.get(id=contact_id)
+        if not emergency_contact:
+            return HttpResponseNotFound("Emergency Contact Not Found")
+        return HttpResponse(json.dumps(emergency_contact.to_dict()), content_type="application/json")
+    elif request.method == "POST":
+        request_params = json.loads(request.body)
+        contact = EmergencyContact.objects.get(id=contact_id)
+        if not contact:
+            return HttpResponseNotFound("Emergency Contact Not Found")
+
+        first_name = request_params.get("first_name", None)
+        last_name = request_params.get("last_name", None)
+        phone_number = request_params.get("phone_number", None)
+        relationship = request_params.get("relationship", None)
+
+        if first_name:
+            contact.first_name = first_name
+        if last_name:
+            contact.last_name = last_name
+        if phone_number:
+            contact.phone_number = phone_number
+        if relationship:
+            contact.relationship = relationship
+
+        contact.save()
+
+        return HttpResponse(json.dumps(contact.to_dict()), content_type="application/json")
 
 
 @csrf_exempt
@@ -216,7 +282,7 @@ def allergies(request):
         query = Allergy.objects.all()
         serialized_json = serializers.serialize("json", query)
         return HttpResponse(serialized_json, content_type="application/json")
-    elif request.method == "POST":
+    elif request.method == "PUT":
         request_params = json.loads(request.body)
         user_id = request_params.get("user_id", None)
         if not user_id:
@@ -233,11 +299,15 @@ def allergies(request):
         allergy.save()
 
         return HttpResponse(json.dumps(allergy.to_dict()), content_type="application/json")
-    elif request.method == "PUT":
+
+
+@csrf_exempt
+def allergies_by_id(request, allergy_id):
+    if request.method == "GET":
+        allergy = Allergy.objects.get(id=allergy_id)
+        return HttpResponse(json.dumps(allergy), content_type="application/json")
+    elif request.method == "POST":
         request_params = json.loads(request.body)
-        allergy_id = request_params.get("allergy_id", None)
-        if not allergy_id:
-            return HttpResponseBadRequest("Invalid Allergy ID")
         allergy = Allergy.objects.get(id=allergy_id)
         if not allergy:
             return HttpResponseNotFound("Unable to find allergy")
@@ -252,9 +322,6 @@ def allergies(request):
 
         allergy.save()
         return HttpResponse(json.dumps(allergy.to_dict()), content_type="application/json")
-    elif request.method == "DELETE":
-        # TODO: Implement this
-        return HttpResponse(None, content_type="application/json")
 
 
 @csrf_exempt
@@ -263,25 +330,6 @@ def prescriptions(request):
         query = Prescription.objects.all()
         serialized_json = serializers.serialize("json", query)
         return HttpResponse(serialized_json, content_type="application/json")
-    elif request.method == "POST":
-        request_params = json.loads(request.body)
-
-        prescription_id = request_params.get("prescription_id", None)
-        if not prescription_id:
-            raise Exception()
-        prescription = Prescription.objects.get(id=prescription_id)
-        if not prescription:
-            raise Exception()
-
-        name = request_params.get("name", None)
-        dosage = request_params.get("dosage", None)
-        if name:
-            prescription.name = name
-        if dosage:
-            prescription.dosage = dosage
-        prescription.save()
-
-        return HttpResponse(json.dumps(prescription.to_dict()), content_type="application/json")
     elif request.method == "PUT":
         request_params = json.loads(request.body)
         user_id = request_params.get("user_id", None)
@@ -305,9 +353,28 @@ def prescriptions(request):
         prescription.save()
 
         return HttpResponse(json.dumps(prescription.to_dict()), content_type="application/json")
-    elif request.method == "DELETE":
-        # TODO: Implement this
-        return HttpResponse(None, content_type="application/json")
+
+
+@csrf_exempt
+def prescriptions_by_id(request, prescription_id):
+    if request.method == "GET":
+        prescription = Prescription.objects.get(id=prescription_id)
+        return HttpResponse(json.dumps(prescription.to_dict()), content_type="application/json")
+    elif request.method == "POST":
+        request_params = json.loads(request.body)
+        prescription = Prescription.objects.get(id=prescription_id)
+        if not prescription:
+            return HttpResponseNotFound("Prescription not found")
+
+        name = request_params.get("name", None)
+        dosage = request_params.get("dosage", None)
+        if name:
+            prescription.name = name
+        if dosage:
+            prescription.dosage = dosage
+        prescription.save()
+
+        return HttpResponse(json.dumps(prescription.to_dict()), content_type="application/json")
 
 
 @csrf_exempt
@@ -316,25 +383,6 @@ def operations(request):
         query = Operation.objects.all()
         serialized_json = serializers.serialize("json", query)
         return HttpResponse(serialized_json, content_type="application/json")
-    elif request.method == "POST":
-        request_params = json.loads(request.body)
-
-        operation_id = request_params.get("operation_id", None)
-        if not operation_id:
-            raise Exception()
-
-        operation = Operation.objects.get(id=operation_id)
-
-        if not operation:
-            raise Exception()
-
-        operation_details = request_params.get("operation", None)
-        if operation_details:
-            operation.operation = operation_details
-
-        operation.save()
-
-        return HttpResponse(json.dumps(operation.to_dict()), content_type="application/json")
     elif request.method == "PUT":
         request_params = json.loads(request.body)
         user_id = request_params.get("user_id", None)
@@ -350,9 +398,28 @@ def operations(request):
         operation.save()
 
         return HttpResponse(json.dumps(operation.to_dict()), content_type="application/json")
-    elif request.method == "DELETE":
-        # TODO: Implement this
-        return HttpResponse(None, content_type="application/json")
+
+
+@csrf_exempt
+def operations_by_id(request, operation_id):
+    if request.method == "GET":
+        operation = Operation.objects.get(id=operation_id)
+        if not operation:
+            return HttpResponseNotFound("Unable to find operation")
+        return HttpResponse(json.dumps(operation.to_dict()), content_type="application/json")
+    elif request.method == "POST":
+        request_params = json.loads(request.body)
+        operation = Operation.objects.get(id=operation_id)
+        if not operation:
+            return HttpResponseNotFound("Unable to find operation")
+
+        operation_details = request_params.get("operation", None)
+        if operation_details:
+            operation.operation = operation_details
+
+        operation.save()
+
+        return HttpResponse(json.dumps(operation.to_dict()), content_type="application/json")
 
 
 @csrf_exempt
@@ -361,22 +428,6 @@ def visits(request):
         query = Visit.objects.all()
         serialized_json = serializers.serialize("json", query)
         return HttpResponse(serialized_json, content_type="application/json")
-    elif request.method == "POST":
-        request_params = json.loads(request.body)
-
-        visit_id = request_params.get("visit_id", None)
-        if not visit_id:
-            raise Exception()
-        visit = Visit.objects.get(id=visit_id)
-        if not visit:
-            raise Exception()
-
-        visit_details = request_params.get("visit", None)
-        if visit_details:
-            visit.visit = visit_details
-        visit.save()
-
-        return HttpResponse(json.dumps(visit.to_dict()), content_type="application/json")
     elif request.method == "PUT":
         request_params = json.loads(request.body)
         user_id = request_params.get("user_id", None)
@@ -392,9 +443,27 @@ def visits(request):
         visit.save()
 
         return HttpResponse(json.dumps(visit.to_dict()), content_type="application/json")
-    elif request.method == "DELETE":
-        # TODO: Implement this
-        return HttpResponse(None, content_type="application/json")
+
+
+@csrf_exempt
+def visits_by_id(request, visit_id):
+    if request.method == "GET":
+        visit = Visit.objects.get(id=visit_id)
+        if not visit:
+            return HttpResponseNotFound("Unable to find visit")
+        return HttpResponse(json.dumps(visit.to_dict()), content_type="application/json")
+    elif request.method == "POST":
+        request_params = json.loads(request.body)
+        visit = Visit.objects.get(id=visit_id)
+        if not visit:
+            return HttpResponseNotFound("Unable to find visit")
+
+        visit_details = request_params.get("visit", None)
+        if visit_details:
+            visit.visit = visit_details
+        visit.save()
+
+        return HttpResponse(json.dumps(visit.to_dict()), content_type="application/json")
 
 
 @csrf_exempt
