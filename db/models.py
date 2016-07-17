@@ -95,7 +95,7 @@ class Allergy(models.Model):
     def to_dict(self):
         return dict(
             id=self.id,
-            user=self.user,
+            user=self.user.to_dict(),
             name=self.name,
             severity=self.severity,
             created_at=time.mktime(self.created_at.timetuple()),
