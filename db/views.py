@@ -283,7 +283,7 @@ def emergency_contacts_by_user_id(request, user_id):
         ecs = EmergencyContact.objects.all()
         for ec in ecs:
             if ec.user.id == int(user_id):
-                response.append(ec.user.to_dict())
+                response.append(ec.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
 
@@ -342,7 +342,7 @@ def allergies_by_user_id(request, user_id):
         alls = Allergy.objects.all()
         for a in alls:
             if a.user.id == int(user_id):
-                response.append(a.user.to_dict())
+                response.append(a.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
 
@@ -407,7 +407,7 @@ def prescriptions_by_user_id(request, user_id):
         prescrips = Prescription.objects.all()
         for p in prescrips:
             if p.user.id == int(user_id):
-                response.append(p.user.to_dict())
+                response.append(p.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
 @csrf_exempt
@@ -462,7 +462,7 @@ def operations_by_user_id(request, user_id):
         ops = Operation.objects.all()
         for o in ops:
             if o.user.id == int(user_id):
-                response.append(o.user.to_dict())
+                response.append(o.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
 @csrf_exempt
@@ -516,7 +516,7 @@ def visits_by_user_id(request, user_id):
         vis = Visit.objects.all()
         for v in vis:
             if v.user.id == int(user_id):
-                response.append(v.user.to_dict())
+                response.append(v.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
 @csrf_exempt
