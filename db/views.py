@@ -276,6 +276,16 @@ def emergency_contacts_by_id(request, contact_id):
 
         return HttpResponse(json.dumps(contact.to_dict()), content_type="application/json")
 
+@csrf_exempt
+def emergency_contacts_by_user_id(request, user_id):
+    if request.method == "GET":
+        response = list()
+        ecs = EmergencyContact.objects.all()
+        for ec in ecs:
+            if ec.user.id == int(user_id):
+                response.append(ec.user.to_dict())
+        return HttpResponse(json.dumps(response), content_type="application/json")
+
 
 @csrf_exempt
 def allergies(request):
@@ -323,6 +333,18 @@ def allergies_by_id(request, allergy_id):
 
         allergy.save()
         return HttpResponse(json.dumps(allergy.to_dict()), content_type="application/json")
+
+
+@csrf_exempt
+def allergies_by_user_id(request, user_id):
+    if request.method == "GET":
+        response = list()
+        alls = Allergy.objects.all()
+        for a in alls:
+            if a.user.id == int(user_id):
+                response.append(a.user.to_dict())
+        return HttpResponse(json.dumps(response), content_type="application/json")
+
 
 
 @csrf_exempt
@@ -379,6 +401,16 @@ def prescriptions_by_id(request, prescription_id):
 
 
 @csrf_exempt
+def prescriptions_by_user_id(request, user_id):
+    if request.method == "GET":
+        response = list()
+        prescrips = Prescription.objects.all()
+        for p in prescrips:
+            if p.user.id == int(user_id):
+                response.append(p.user.to_dict())
+        return HttpResponse(json.dumps(response), content_type="application/json")
+
+@csrf_exempt
 def operations(request):
     if request.method == "GET":
         query = Operation.objects.all()
@@ -424,6 +456,16 @@ def operations_by_id(request, operation_id):
 
 
 @csrf_exempt
+def operations_by_user_id(request, user_id):
+    if request.method == "GET":
+        response = list()
+        ops = Operation.objects.all()
+        for o in ops:
+            if o.user.id == int(user_id):
+                response.append(o.user.to_dict())
+        return HttpResponse(json.dumps(response), content_type="application/json")
+
+@csrf_exempt
 def visits(request):
     if request.method == "GET":
         query = Visit.objects.all()
@@ -466,6 +508,16 @@ def visits_by_id(request, visit_id):
 
         return HttpResponse(json.dumps(visit.to_dict()), content_type="application/json")
 
+
+@csrf_exempt
+def visits_by_user_id(request, user_id):
+    if request.method == "GET":
+        response = list()
+        vis = Visit.objects.all()
+        for v in vis:
+            if v.user.id == int(user_id):
+                response.append(v.user.to_dict())
+        return HttpResponse(json.dumps(response), content_type="application/json")
 
 @csrf_exempt
 def doctor_notes(request):
