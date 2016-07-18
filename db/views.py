@@ -1,20 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseNotFound, HttpResponseNotAllowed
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound, HttpResponseNotAllowed
 from rest_framework import viewsets
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from db.models import *
 from db.serializers import *
 from django.core import serializers
-from django.core.serializers.json import DjangoJSONEncoder
-from django.views.decorators.http import require_GET, require_POST
 from datetime import datetime
-from datetime import date
 import time
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.contrib.auth.hashers import BCryptPasswordHasher
-
+import random
 
 @csrf_exempt
 def authenticate(request):
@@ -30,7 +23,10 @@ def authenticate(request):
             return HttpResponseNotFound("User does not exist")
 
         if BCryptPasswordHasher().verify(password, user.password):
-            return HttpResponse("Security Token Authenticated")
+            response = dict(
+                token=random.getrandbits(64)
+            )
+            return HttpResponse(json.dumps(response), content_type="application/json")
         else:
             return HttpResponseNotAllowed("Invalid email/password")
 
