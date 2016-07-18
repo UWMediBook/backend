@@ -115,7 +115,7 @@ def users_by_id(request, user_id):
         if email:
             user.email = email
         if password:
-            user.password = password
+            user.password = BCryptPasswordHasher().encode(password=password, salt=BCryptPasswordHasher().salt())
         if healthcard:
             user.healthcard = healthcard
         if doctor:
