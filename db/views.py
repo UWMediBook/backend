@@ -24,7 +24,8 @@ def authenticate(request):
 
         if BCryptPasswordHasher().verify(password, user.password):
             response = dict(
-                token=random.getrandbits(64)
+                token=random.getrandbits(64),
+                is_doctor=int(user.is_doctor)
             )
             return HttpResponse(json.dumps(response), content_type="application/json")
         else:
