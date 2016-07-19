@@ -19,6 +19,17 @@ def authenticate(request):
         if not email or not password:
             return HttpResponseBadRequest("Missing email or password")
 
+        if "@medibook.ca" in email:
+            doctor = Doctor.objects.get(email=email)
+            if BCryptPasswordHasher().verify(password, doctor.password):
+                response = dict(
+                    token=random.getrandbits(64),
+                    is_doctor=1
+                )
+                return HttpResponse(json.dumps(response), content_type="application/json")
+            else:
+                return HttpResponseNotAllowed("Invalid email/password")
+
         user = User.objects.get(email=email)
         if not user:
             return HttpResponseNotFound("User does not exist")
@@ -26,7 +37,7 @@ def authenticate(request):
         if BCryptPasswordHasher().verify(password, user.password):
             response = dict(
                 token=random.getrandbits(64),
-                is_doctor=int(user.is_doctor)
+                is_doctor=0
             )
             return HttpResponse(json.dumps(response), content_type="application/json")
         else:
