@@ -1,0 +1,403 @@
+2016.07.18 20:21:34 LOG5[ui]: stunnel 5.32 on x86_64-apple-darwin15.4.0 platform
+2016.07.18 20:21:34 LOG5[ui]: Compiled/running with OpenSSL 1.0.2h  3 May 2016
+2016.07.18 20:21:34 LOG5[ui]: Threading:PTHREAD Sockets:POLL,IPv6 TLS:ENGINE,FIPS,OCSP,PSK,SNI
+2016.07.18 20:21:34 LOG5[ui]: Reading configuration from file /Users/kevinyang/code/medibook/backend/dev_https
+2016.07.18 20:21:34 LOG5[ui]: UTF-8 byte order mark not detected
+2016.07.18 20:21:34 LOG5[ui]: FIPS mode disabled
+2016.07.18 20:21:34 LOG5[ui]: Configuration successful
+2016.07.18 20:22:05 LOG5[1]: Service [https] accepted connection from 127.0.0.1:56189
+2016.07.18 20:22:05 LOG5[0]: Service [https] accepted connection from 127.0.0.1:56187
+2016.07.18 20:22:05 LOG3[0]: SSL_accept: 1408F10B: error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number
+2016.07.18 20:22:05 LOG5[0]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:22:05 LOG3[1]: SSL_accept: 1408F10B: error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number
+2016.07.18 20:22:05 LOG5[1]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:22:05 LOG5[2]: Service [https] accepted connection from 127.0.0.1:56192
+2016.07.18 20:22:05 LOG3[2]: SSL_accept: 1408F10B: error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number
+2016.07.18 20:22:05 LOG5[2]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:22:06 LOG5[3]: Service [https] accepted connection from 127.0.0.1:56195
+2016.07.18 20:22:06 LOG3[3]: SSL_accept: 1408F10B: error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number
+2016.07.18 20:22:06 LOG5[3]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:22:34 LOG5[cron]: Updating DH parameters
+2016.07.18 20:23:01 LOG5[cron]: DH parameters updated
+2016.07.18 20:23:04 LOG3[ui]: Received SIGINT; terminating
+2016.07.18 20:23:27 LOG5[ui]: stunnel 5.32 on x86_64-apple-darwin15.4.0 platform
+2016.07.18 20:23:27 LOG5[ui]: Compiled/running with OpenSSL 1.0.2h  3 May 2016
+2016.07.18 20:23:27 LOG5[ui]: Threading:PTHREAD Sockets:POLL,IPv6 TLS:ENGINE,FIPS,OCSP,PSK,SNI
+2016.07.18 20:23:27 LOG5[ui]: Reading configuration from file /Users/kevinyang/code/medibook/backend/dev_https
+2016.07.18 20:23:27 LOG5[ui]: UTF-8 byte order mark not detected
+2016.07.18 20:23:27 LOG5[ui]: FIPS mode disabled
+2016.07.18 20:23:27 LOG5[ui]: Configuration successful
+2016.07.18 20:23:29 LOG5[1]: Service [https] accepted connection from 127.0.0.1:58742
+2016.07.18 20:23:29 LOG5[0]: Service [https] accepted connection from 127.0.0.1:58741
+2016.07.18 20:23:29 LOG3[0]: SSL_accept: 1408F10B: error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number
+2016.07.18 20:23:29 LOG5[0]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:23:29 LOG3[1]: SSL_accept: 1408F10B: error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number
+2016.07.18 20:23:29 LOG5[1]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:23:29 LOG5[2]: Service [https] accepted connection from 127.0.0.1:58744
+2016.07.18 20:23:29 LOG3[2]: SSL_accept: 1408F10B: error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number
+2016.07.18 20:23:29 LOG5[2]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:24:27 LOG5[cron]: Updating DH parameters
+2016.07.18 20:25:44 LOG5[3]: Service [https] accepted connection from 127.0.0.1:62445
+2016.07.18 20:25:44 LOG5[4]: Service [https] accepted connection from 127.0.0.1:62447
+2016.07.18 20:25:44 LOG3[3]: SSL_accept: 1408F10B: error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number
+2016.07.18 20:25:44 LOG5[3]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:25:44 LOG3[4]: SSL_accept: 1408F10B: error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number
+2016.07.18 20:25:44 LOG5[4]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:25:44 LOG5[5]: Service [https] accepted connection from 127.0.0.1:62465
+2016.07.18 20:25:44 LOG3[5]: SSL_accept: 1408F10B: error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number
+2016.07.18 20:25:44 LOG5[5]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:25:58 LOG5[cron]: DH parameters updated
+2016.07.18 20:26:31 LOG3[ui]: Received SIGINT; terminating
+2016.07.18 20:26:32 LOG5[ui]: stunnel 5.32 on x86_64-apple-darwin15.4.0 platform
+2016.07.18 20:26:32 LOG5[ui]: Compiled/running with OpenSSL 1.0.2h  3 May 2016
+2016.07.18 20:26:32 LOG5[ui]: Threading:PTHREAD Sockets:POLL,IPv6 TLS:ENGINE,FIPS,OCSP,PSK,SNI
+2016.07.18 20:26:32 LOG5[ui]: Reading configuration from file /Users/kevinyang/code/medibook/backend/dev_https
+2016.07.18 20:26:32 LOG5[ui]: UTF-8 byte order mark not detected
+2016.07.18 20:26:32 LOG5[ui]: FIPS mode disabled
+2016.07.18 20:26:33 LOG5[ui]: Configuration successful
+2016.07.18 20:26:36 LOG5[0]: Service [https] accepted connection from 127.0.0.1:64166
+2016.07.18 20:26:36 LOG5[1]: Service [https] accepted connection from 127.0.0.1:64167
+2016.07.18 20:26:36 LOG3[0]: SSL_accept: 1407609C: error:1407609C:SSL routines:SSL23_GET_CLIENT_HELLO:http request
+2016.07.18 20:26:36 LOG5[0]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:26:36 LOG3[1]: SSL_accept: 1407609C: error:1407609C:SSL routines:SSL23_GET_CLIENT_HELLO:http request
+2016.07.18 20:26:36 LOG5[1]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:26:36 LOG5[2]: Service [https] accepted connection from 127.0.0.1:64170
+2016.07.18 20:26:36 LOG3[2]: SSL_accept: 1407609C: error:1407609C:SSL routines:SSL23_GET_CLIENT_HELLO:http request
+2016.07.18 20:26:36 LOG5[2]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:26:41 LOG5[3]: Service [https] accepted connection from 127.0.0.1:64342
+2016.07.18 20:26:41 LOG3[3]: SSL_accept: 1407609C: error:1407609C:SSL routines:SSL23_GET_CLIENT_HELLO:http request
+2016.07.18 20:26:41 LOG5[3]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:26:41 LOG5[4]: Service [https] accepted connection from 127.0.0.1:64361
+2016.07.18 20:26:41 LOG5[5]: Service [https] accepted connection from 127.0.0.1:64363
+2016.07.18 20:26:42 LOG3[4]: s_connect: connect 127.0.0.1:8001: Connection refused (61)
+2016.07.18 20:26:42 LOG3[5]: s_connect: connect ::1:8001: Connection refused (61)
+2016.07.18 20:26:42 LOG3[4]: s_connect: connect ::1:8001: Connection refused (61)
+2016.07.18 20:26:42 LOG3[5]: s_connect: connect 127.0.0.1:8001: Connection refused (61)
+2016.07.18 20:26:42 LOG5[4]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:26:42 LOG5[5]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:26:42 LOG5[6]: Service [https] accepted connection from 127.0.0.1:64402
+2016.07.18 20:26:42 LOG3[6]: s_connect: connect 127.0.0.1:8001: Connection refused (61)
+2016.07.18 20:26:42 LOG3[6]: s_connect: connect ::1:8001: Connection refused (61)
+2016.07.18 20:26:42 LOG5[6]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:26:46 LOG5[7]: Service [https] accepted connection from 127.0.0.1:64548
+2016.07.18 20:26:46 LOG3[7]: s_connect: connect ::1:8001: Connection refused (61)
+2016.07.18 20:26:46 LOG3[7]: s_connect: connect 127.0.0.1:8001: Connection refused (61)
+2016.07.18 20:26:46 LOG5[7]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:26:46 LOG5[8]: Service [https] accepted connection from 127.0.0.1:64552
+2016.07.18 20:26:46 LOG5[8]: persistence: No cached address found
+2016.07.18 20:26:46 LOG3[8]: s_connect: connect 127.0.0.1:8001: Connection refused (61)
+2016.07.18 20:26:46 LOG3[8]: s_connect: connect ::1:8001: Connection refused (61)
+2016.07.18 20:26:46 LOG5[8]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:26:46 LOG5[9]: Service [https] accepted connection from 127.0.0.1:64556
+2016.07.18 20:26:46 LOG5[9]: persistence: No cached address found
+2016.07.18 20:26:46 LOG3[9]: s_connect: connect ::1:8001: Connection refused (61)
+2016.07.18 20:26:46 LOG3[9]: s_connect: connect 127.0.0.1:8001: Connection refused (61)
+2016.07.18 20:26:46 LOG5[9]: Connection reset: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:26:50 LOG3[ui]: Received SIGINT; terminating
+2016.07.18 20:28:30 LOG5[ui]: stunnel 5.32 on x86_64-apple-darwin15.4.0 platform
+2016.07.18 20:28:30 LOG5[ui]: Compiled/running with OpenSSL 1.0.2h  3 May 2016
+2016.07.18 20:28:30 LOG5[ui]: Threading:PTHREAD Sockets:POLL,IPv6 TLS:ENGINE,FIPS,OCSP,PSK,SNI
+2016.07.18 20:28:30 LOG5[ui]: Reading configuration from file /Users/kevinyang/code/medibook/backend/dev_https
+2016.07.18 20:28:30 LOG5[ui]: UTF-8 byte order mark not detected
+2016.07.18 20:28:30 LOG5[ui]: FIPS mode disabled
+2016.07.18 20:28:30 LOG5[ui]: Configuration successful
+2016.07.18 20:28:43 LOG5[0]: Service [https] accepted connection from 127.0.0.1:51843
+2016.07.18 20:28:43 LOG5[1]: Service [https] accepted connection from 127.0.0.1:51845
+2016.07.18 20:28:43 LOG3[0]: s_connect: connect ::1:8000: Connection refused (61)
+2016.07.18 20:28:43 LOG5[0]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:43 LOG5[0]: Service [https] connected remote server from 127.0.0.1:51847
+2016.07.18 20:28:43 LOG5[0]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:43 LOG5[1]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:43 LOG5[1]: Service [https] connected remote server from 127.0.0.1:51848
+2016.07.18 20:28:43 LOG5[1]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:43 LOG5[2]: Service [https] accepted connection from 127.0.0.1:51850
+2016.07.18 20:28:43 LOG3[2]: s_connect: connect ::1:8000: Connection refused (61)
+2016.07.18 20:28:43 LOG5[2]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:43 LOG5[2]: Service [https] connected remote server from 127.0.0.1:51852
+2016.07.18 20:28:44 LOG5[2]: Connection closed: 2421 byte(s) sent to SSL, 396 byte(s) sent to socket
+2016.07.18 20:28:44 LOG5[3]: Service [https] accepted connection from 127.0.0.1:51886
+2016.07.18 20:28:44 LOG5[3]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:44 LOG5[3]: Service [https] connected remote server from 127.0.0.1:51887
+2016.07.18 20:28:44 LOG5[3]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:44 LOG5[4]: Service [https] accepted connection from 127.0.0.1:51889
+2016.07.18 20:28:44 LOG5[4]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:44 LOG5[4]: Service [https] connected remote server from 127.0.0.1:51890
+2016.07.18 20:28:44 LOG5[4]: Connection closed: 2454 byte(s) sent to SSL, 340 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[5]: Service [https] accepted connection from 127.0.0.1:51964
+2016.07.18 20:28:47 LOG5[6]: Service [https] accepted connection from 127.0.0.1:51968
+2016.07.18 20:28:47 LOG5[7]: Service [https] accepted connection from 127.0.0.1:51969
+2016.07.18 20:28:47 LOG5[8]: Service [https] accepted connection from 127.0.0.1:51970
+2016.07.18 20:28:47 LOG5[9]: Service [https] accepted connection from 127.0.0.1:51972
+2016.07.18 20:28:47 LOG5[5]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[5]: Service [https] connected remote server from 127.0.0.1:51973
+2016.07.18 20:28:47 LOG5[5]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[6]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[7]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[8]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[6]: Service [https] connected remote server from 127.0.0.1:51974
+2016.07.18 20:28:47 LOG5[7]: Service [https] connected remote server from 127.0.0.1:51975
+2016.07.18 20:28:47 LOG5[6]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[8]: Service [https] connected remote server from 127.0.0.1:51976
+2016.07.18 20:28:47 LOG5[7]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[8]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[9]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[9]: Service [https] connected remote server from 127.0.0.1:51977
+2016.07.18 20:28:47 LOG5[9]: Connection closed: 195 byte(s) sent to SSL, 399 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[10]: Service [https] accepted connection from 127.0.0.1:51979
+2016.07.18 20:28:47 LOG5[10]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[10]: Service [https] connected remote server from 127.0.0.1:51980
+2016.07.18 20:28:47 LOG5[10]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[11]: Service [https] accepted connection from 127.0.0.1:51982
+2016.07.18 20:28:47 LOG5[11]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[11]: Service [https] connected remote server from 127.0.0.1:51983
+2016.07.18 20:28:47 LOG5[11]: Connection closed: 5879 byte(s) sent to SSL, 400 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[12]: Service [https] accepted connection from 127.0.0.1:52016
+2016.07.18 20:28:47 LOG5[12]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[12]: Service [https] connected remote server from 127.0.0.1:52017
+2016.07.18 20:28:47 LOG5[12]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[13]: Service [https] accepted connection from 127.0.0.1:52019
+2016.07.18 20:28:47 LOG5[14]: Service [https] accepted connection from 127.0.0.1:52021
+2016.07.18 20:28:47 LOG5[15]: Service [https] accepted connection from 127.0.0.1:52023
+2016.07.18 20:28:47 LOG5[16]: Service [https] accepted connection from 127.0.0.1:52025
+2016.07.18 20:28:47 LOG5[17]: Service [https] accepted connection from 127.0.0.1:52027
+2016.07.18 20:28:47 LOG5[18]: Service [https] accepted connection from 127.0.0.1:52029
+2016.07.18 20:28:47 LOG5[19]: Service [https] accepted connection from 127.0.0.1:52031
+2016.07.18 20:28:47 LOG5[20]: Service [https] accepted connection from 127.0.0.1:52033
+2016.07.18 20:28:47 LOG5[21]: Service [https] accepted connection from 127.0.0.1:52035
+2016.07.18 20:28:47 LOG5[22]: Service [https] accepted connection from 127.0.0.1:52037
+2016.07.18 20:28:47 LOG5[13]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[23]: Service [https] accepted connection from 127.0.0.1:52039
+2016.07.18 20:28:47 LOG5[13]: Service [https] connected remote server from 127.0.0.1:52040
+2016.07.18 20:28:47 LOG5[14]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[14]: Service [https] connected remote server from 127.0.0.1:52041
+2016.07.18 20:28:47 LOG5[15]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[14]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[16]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[17]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[18]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[15]: Service [https] connected remote server from 127.0.0.1:52042
+2016.07.18 20:28:47 LOG5[16]: Service [https] connected remote server from 127.0.0.1:52043
+2016.07.18 20:28:47 LOG5[15]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[17]: Service [https] connected remote server from 127.0.0.1:52044
+2016.07.18 20:28:47 LOG5[18]: Service [https] connected remote server from 127.0.0.1:52045
+2016.07.18 20:28:47 LOG5[16]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[17]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[18]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[24]: Service [https] accepted connection from 127.0.0.1:52047
+2016.07.18 20:28:47 LOG5[25]: Service [https] accepted connection from 127.0.0.1:52049
+2016.07.18 20:28:47 LOG5[26]: Service [https] accepted connection from 127.0.0.1:52051
+2016.07.18 20:28:47 LOG5[19]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[19]: Service [https] connected remote server from 127.0.0.1:52052
+2016.07.18 20:28:47 LOG5[20]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[21]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[19]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[24]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[27]: Service [https] accepted connection from 127.0.0.1:52059
+2016.07.18 20:28:47 LOG5[22]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[26]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[23]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[25]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[20]: Service [https] connected remote server from 127.0.0.1:52053
+2016.07.18 20:28:47 LOG5[13]: Connection closed: 122728 byte(s) sent to SSL, 391 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[20]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[21]: Service [https] connected remote server from 127.0.0.1:52054
+2016.07.18 20:28:47 LOG5[24]: Service [https] connected remote server from 127.0.0.1:52057
+2016.07.18 20:28:47 LOG5[26]: Service [https] connected remote server from 127.0.0.1:52061
+2016.07.18 20:28:47 LOG5[22]: Service [https] connected remote server from 127.0.0.1:52055
+2016.07.18 20:28:47 LOG5[23]: Service [https] connected remote server from 127.0.0.1:52056
+2016.07.18 20:28:47 LOG5[25]: Service [https] connected remote server from 127.0.0.1:52060
+2016.07.18 20:28:47 LOG5[21]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[24]: Connection closed: 1318 byte(s) sent to SSL, 385 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[28]: Service [https] accepted connection from 127.0.0.1:52064
+2016.07.18 20:28:47 LOG5[29]: Service [https] accepted connection from 127.0.0.1:52066
+2016.07.18 20:28:47 LOG5[30]: Service [https] accepted connection from 127.0.0.1:52068
+2016.07.18 20:28:47 LOG5[23]: Connection closed: 1002 byte(s) sent to SSL, 386 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[26]: Connection closed: 3370 byte(s) sent to SSL, 370 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[25]: Connection closed: 96158 byte(s) sent to SSL, 378 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[27]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[22]: Connection closed: 3585 byte(s) sent to SSL, 394 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[31]: Service [https] accepted connection from 127.0.0.1:52070
+2016.07.18 20:28:47 LOG5[32]: Service [https] accepted connection from 127.0.0.1:52072
+2016.07.18 20:28:47 LOG5[27]: Service [https] connected remote server from 127.0.0.1:52073
+2016.07.18 20:28:47 LOG5[27]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[28]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[28]: Service [https] connected remote server from 127.0.0.1:52074
+2016.07.18 20:28:47 LOG5[33]: Service [https] accepted connection from 127.0.0.1:52076
+2016.07.18 20:28:47 LOG5[28]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[34]: Service [https] accepted connection from 127.0.0.1:52078
+2016.07.18 20:28:47 LOG5[35]: Service [https] accepted connection from 127.0.0.1:52080
+2016.07.18 20:28:47 LOG5[36]: Service [https] accepted connection from 127.0.0.1:52082
+2016.07.18 20:28:47 LOG5[37]: Service [https] accepted connection from 127.0.0.1:52084
+2016.07.18 20:28:47 LOG5[29]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[29]: Service [https] connected remote server from 127.0.0.1:52085
+2016.07.18 20:28:47 LOG5[30]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[29]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[30]: Service [https] connected remote server from 127.0.0.1:52086
+2016.07.18 20:28:47 LOG5[38]: Service [https] accepted connection from 127.0.0.1:52088
+2016.07.18 20:28:47 LOG5[30]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[31]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[32]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[31]: Service [https] connected remote server from 127.0.0.1:52089
+2016.07.18 20:28:47 LOG5[33]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[31]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:47 LOG5[34]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:47 LOG5[32]: Service [https] connected remote server from 127.0.0.1:52090
+2016.07.18 20:28:47 LOG5[33]: Service [https] connected remote server from 127.0.0.1:52091
+2016.07.18 20:28:48 LOG5[32]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:48 LOG5[33]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:28:48 LOG5[34]: Service [https] connected remote server from 127.0.0.1:52092
+2016.07.18 20:28:48 LOG5[35]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:48 LOG5[35]: Service [https] connected remote server from 127.0.0.1:52093
+2016.07.18 20:28:48 LOG5[36]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:48 LOG5[37]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:48 LOG5[36]: Service [https] connected remote server from 127.0.0.1:52094
+2016.07.18 20:28:48 LOG5[37]: Service [https] connected remote server from 127.0.0.1:52095
+2016.07.18 20:28:48 LOG5[34]: Connection closed: 1960 byte(s) sent to SSL, 368 byte(s) sent to socket
+2016.07.18 20:28:48 LOG5[38]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:28:48 LOG5[38]: Service [https] connected remote server from 127.0.0.1:52096
+2016.07.18 20:28:48 LOG5[35]: Connection closed: 2032 byte(s) sent to SSL, 365 byte(s) sent to socket
+2016.07.18 20:28:48 LOG5[38]: Connection closed: 1645 byte(s) sent to SSL, 434 byte(s) sent to socket
+2016.07.18 20:28:48 LOG5[37]: Connection closed: 13833 byte(s) sent to SSL, 373 byte(s) sent to socket
+2016.07.18 20:28:48 LOG5[36]: Connection closed: 37017 byte(s) sent to SSL, 374 byte(s) sent to socket
+2016.07.18 20:29:12 LOG5[39]: Service [https] accepted connection from 127.0.0.1:52895
+2016.07.18 20:29:12 LOG5[39]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:29:12 LOG5[39]: Service [https] connected remote server from 127.0.0.1:52898
+2016.07.18 20:29:12 LOG5[39]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:29:12 LOG5[40]: Service [https] accepted connection from 127.0.0.1:52900
+2016.07.18 20:29:12 LOG5[40]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:29:12 LOG5[40]: Service [https] connected remote server from 127.0.0.1:52901
+2016.07.18 20:29:12 LOG5[40]: Connection closed: 562 byte(s) sent to SSL, 383 byte(s) sent to socket
+2016.07.18 20:29:30 LOG5[cron]: Updating DH parameters
+2016.07.18 20:30:01 LOG5[cron]: DH parameters updated
+2016.07.18 20:43:21 LOG5[41]: Service [https] accepted connection from 127.0.0.1:60980
+2016.07.18 20:43:21 LOG5[42]: Service [https] accepted connection from 127.0.0.1:60986
+2016.07.18 20:43:21 LOG5[43]: Service [https] accepted connection from 127.0.0.1:60987
+2016.07.18 20:43:21 LOG5[44]: Service [https] accepted connection from 127.0.0.1:60988
+2016.07.18 20:43:21 LOG5[45]: Service [https] accepted connection from 127.0.0.1:60989
+2016.07.18 20:43:21 LOG5[46]: Service [https] accepted connection from 127.0.0.1:60990
+2016.07.18 20:43:22 LOG5[41]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[41]: Service [https] connected remote server from 127.0.0.1:60991
+2016.07.18 20:43:22 LOG3[42]: s_connect: connect ::1:8000: Connection refused (61)
+2016.07.18 20:43:22 LOG5[41]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[43]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[42]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG3[44]: s_connect: connect ::1:8000: Connection refused (61)
+2016.07.18 20:43:22 LOG5[43]: Service [https] connected remote server from 127.0.0.1:60993
+2016.07.18 20:43:22 LOG5[42]: Service [https] connected remote server from 127.0.0.1:60994
+2016.07.18 20:43:22 LOG5[45]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[44]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[43]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[42]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[47]: Service [https] accepted connection from 127.0.0.1:60999
+2016.07.18 20:43:22 LOG3[46]: s_connect: connect ::1:8000: Connection refused (61)
+2016.07.18 20:43:22 LOG5[45]: Service [https] connected remote server from 127.0.0.1:60996
+2016.07.18 20:43:22 LOG5[44]: Service [https] connected remote server from 127.0.0.1:60998
+2016.07.18 20:43:22 LOG5[46]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[45]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[44]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[46]: Service [https] connected remote server from 127.0.0.1:61001
+2016.07.18 20:43:22 LOG5[46]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[47]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[47]: Service [https] connected remote server from 127.0.0.1:61002
+2016.07.18 20:43:22 LOG5[47]: Connection closed: 5863 byte(s) sent to SSL, 426 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[48]: Service [https] accepted connection from 127.0.0.1:61005
+2016.07.18 20:43:22 LOG5[49]: Service [https] accepted connection from 127.0.0.1:61007
+2016.07.18 20:43:22 LOG5[50]: Service [https] accepted connection from 127.0.0.1:61009
+2016.07.18 20:43:22 LOG5[51]: Service [https] accepted connection from 127.0.0.1:61011
+2016.07.18 20:43:22 LOG5[52]: Service [https] accepted connection from 127.0.0.1:61014
+2016.07.18 20:43:22 LOG5[53]: Service [https] accepted connection from 127.0.0.1:61015
+2016.07.18 20:43:22 LOG5[54]: Service [https] accepted connection from 127.0.0.1:61018
+2016.07.18 20:43:22 LOG5[55]: Service [https] accepted connection from 127.0.0.1:61020
+2016.07.18 20:43:22 LOG5[56]: Service [https] accepted connection from 127.0.0.1:61022
+2016.07.18 20:43:22 LOG5[57]: Service [https] accepted connection from 127.0.0.1:61024
+2016.07.18 20:43:22 LOG5[58]: Service [https] accepted connection from 127.0.0.1:61027
+2016.07.18 20:43:22 LOG5[59]: Service [https] accepted connection from 127.0.0.1:61029
+2016.07.18 20:43:22 LOG5[48]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[49]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[50]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[48]: Service [https] connected remote server from 127.0.0.1:61030
+2016.07.18 20:43:22 LOG5[49]: Service [https] connected remote server from 127.0.0.1:61031
+2016.07.18 20:43:22 LOG5[48]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[49]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[50]: Service [https] connected remote server from 127.0.0.1:61032
+2016.07.18 20:43:22 LOG5[50]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[51]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[52]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[53]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[51]: Service [https] connected remote server from 127.0.0.1:61033
+2016.07.18 20:43:22 LOG5[52]: Service [https] connected remote server from 127.0.0.1:61034
+2016.07.18 20:43:22 LOG5[53]: Service [https] connected remote server from 127.0.0.1:61035
+2016.07.18 20:43:22 LOG5[51]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[52]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[53]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[60]: Service [https] accepted connection from 127.0.0.1:61037
+2016.07.18 20:43:22 LOG5[61]: Service [https] accepted connection from 127.0.0.1:61039
+2016.07.18 20:43:22 LOG5[62]: Service [https] accepted connection from 127.0.0.1:61041
+2016.07.18 20:43:22 LOG5[63]: Service [https] accepted connection from 127.0.0.1:61043
+2016.07.18 20:43:22 LOG5[64]: Service [https] accepted connection from 127.0.0.1:61045
+2016.07.18 20:43:22 LOG5[65]: Service [https] accepted connection from 127.0.0.1:61047
+2016.07.18 20:43:22 LOG5[54]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[55]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[56]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[54]: Service [https] connected remote server from 127.0.0.1:61048
+2016.07.18 20:43:22 LOG5[55]: Service [https] connected remote server from 127.0.0.1:61049
+2016.07.18 20:43:22 LOG5[54]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[56]: Service [https] connected remote server from 127.0.0.1:61050
+2016.07.18 20:43:22 LOG5[55]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[56]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[57]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[58]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[59]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[57]: Service [https] connected remote server from 127.0.0.1:61051
+2016.07.18 20:43:22 LOG5[58]: Service [https] connected remote server from 127.0.0.1:61052
+2016.07.18 20:43:22 LOG5[59]: Service [https] connected remote server from 127.0.0.1:61053
+2016.07.18 20:43:22 LOG5[57]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[58]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[59]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[66]: Service [https] accepted connection from 127.0.0.1:61055
+2016.07.18 20:43:22 LOG5[67]: Service [https] accepted connection from 127.0.0.1:61057
+2016.07.18 20:43:22 LOG5[68]: Service [https] accepted connection from 127.0.0.1:61059
+2016.07.18 20:43:22 LOG5[60]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[61]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[62]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[60]: Service [https] connected remote server from 127.0.0.1:61060
+2016.07.18 20:43:22 LOG5[61]: Service [https] connected remote server from 127.0.0.1:61061
+2016.07.18 20:43:22 LOG5[60]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[62]: Service [https] connected remote server from 127.0.0.1:61062
+2016.07.18 20:43:22 LOG5[61]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[62]: Connection closed: 0 byte(s) sent to SSL, 0 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[63]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[64]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[65]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[63]: Service [https] connected remote server from 127.0.0.1:61063
+2016.07.18 20:43:22 LOG5[64]: Service [https] connected remote server from 127.0.0.1:61064
+2016.07.18 20:43:22 LOG5[65]: Service [https] connected remote server from 127.0.0.1:61065
+2016.07.18 20:43:22 LOG5[65]: Connection closed: 123 byte(s) sent to SSL, 450 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[64]: Connection closed: 123 byte(s) sent to SSL, 441 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[63]: Connection closed: 123 byte(s) sent to SSL, 446 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[69]: Service [https] accepted connection from 127.0.0.1:61068
+2016.07.18 20:43:22 LOG5[70]: Service [https] accepted connection from 127.0.0.1:61069
+2016.07.18 20:43:22 LOG5[71]: Service [https] accepted connection from 127.0.0.1:61071
+2016.07.18 20:43:22 LOG5[66]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[67]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[68]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[66]: Service [https] connected remote server from 127.0.0.1:61072
+2016.07.18 20:43:22 LOG5[67]: Service [https] connected remote server from 127.0.0.1:61073
+2016.07.18 20:43:22 LOG5[68]: Service [https] connected remote server from 127.0.0.1:61074
+2016.07.18 20:43:22 LOG5[68]: Connection closed: 123 byte(s) sent to SSL, 467 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[67]: Connection closed: 123 byte(s) sent to SSL, 444 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[66]: Connection closed: 123 byte(s) sent to SSL, 449 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[72]: Service [https] accepted connection from 127.0.0.1:61076
+2016.07.18 20:43:22 LOG5[69]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[70]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[71]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[69]: Service [https] connected remote server from 127.0.0.1:61077
+2016.07.18 20:43:22 LOG5[70]: Service [https] connected remote server from 127.0.0.1:61078
+2016.07.18 20:43:22 LOG5[71]: Service [https] connected remote server from 127.0.0.1:61079
+2016.07.18 20:43:22 LOG5[72]: s_connect: connected 127.0.0.1:8000
+2016.07.18 20:43:22 LOG5[72]: Service [https] connected remote server from 127.0.0.1:61080
+2016.07.18 20:43:22 LOG5[71]: Connection closed: 123 byte(s) sent to SSL, 461 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[70]: Connection closed: 123 byte(s) sent to SSL, 462 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[69]: Connection closed: 123 byte(s) sent to SSL, 470 byte(s) sent to socket
+2016.07.18 20:43:22 LOG5[72]: Connection closed: 123 byte(s) sent to SSL, 454 byte(s) sent to socket
+2016.07.18 20:43:45 LOG3[ui]: Received SIGINT; terminating
