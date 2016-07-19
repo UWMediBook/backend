@@ -87,10 +87,10 @@ def users(request):
 @csrf_exempt
 def users_by_id(request, user_id):
     if request.method == "GET":
-        user = User.objects.get(id=user_id)
-        if not user:
-            return HttpResponseNotFound("User not found")
-        return HttpResponse(json.dumps(user.to_dict()), content_type="application/json")
+        user = User.objects.filter(id=user_id)
+        if len(user) < 1:
+            return HttpResponseNotFound(json.dumps(dict(error="User not found")), content_type="application/json")
+        return HttpResponse(json.dumps(user.first().to_dict()), content_type="application/json")
     elif request.method == "POST":
         request_params = json.loads(request.body)
         user = User.objects.get(id=user_id)
