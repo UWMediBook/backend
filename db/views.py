@@ -231,6 +231,32 @@ def doctors_by_id(request, doctor_id):
         doctor.save()
         return HttpResponse(json.dumps(doctor.to_dict()), content_type="application/json")
 
+@csrf_exempt
+def doctors_by_email(request, email):
+    if request.method == "GET":
+        doctors = Doctor.objects.filter(email=email)
+        if len(doctors) < 1:
+            return HttpResponseNotFound("No Doctors with that email")
+        return HttpResponse(json.dumps(doctors.first().to_dict()), content_type="application/json")
+    elif request.method == "POST":
+        request_params = json.loads(request.body)
+        doctor = Doctor.objects.get(email=email)
+        if not doctor:
+            return HttpResponseNotFound("Unable to find doctor")
+        first_name = request_params.get("first_name", None)
+        last_name = request_params.get("last_name", None)
+        email = request_params.get("email", None)
+        password = request_params.get("password", None)
+        if first_name:
+            doctor.first_name = first_name
+        if last_name:
+            doctor.last_name = last_name
+        if email:
+            doctor.email = email
+        if password:
+            doctor.password = BCryptPasswordHasher().encode(password=password, salt=BCryptPasswordHasher().salt())
+        doctor.save()
+        return HttpResponse(json.dumps(doctor.to_dict()), content_type="application/json")
 
 @csrf_exempt
 def users_by_doctor_id(request, doctor_id):
