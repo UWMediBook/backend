@@ -36,7 +36,7 @@ class User(models.Model):
         ('N', 'N/A')
     )
     gender = models.CharField(max_length=1, choices=genders, default=genders[2][0])
-    birthday = models.DateField()
+    birthday = models.DateTimeField()
     email = models.CharField(max_length=255, default="", unique=True)
     password = models.CharField(max_length=255, default="wordpass")
     healthcard = models.CharField(max_length=30, default="123")
