@@ -7,7 +7,7 @@ class Doctor(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    email = models.CharField(max_length=255, default="")
+    email = models.CharField(max_length=255, default="", unique=True)
     password = models.CharField(max_length=255, default="wordpass")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^users/(?P<email>\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3})/$', views.users_by_email),
     url(r'^doctors/$', views.doctors),
     url(r'^doctors/(?P<doctor_id>[0-9]+)/$', views.doctors_by_id),
+    url(r'^doctors/(?P<doctor_id>[0-9]+)/users/$', views.users_by_doctor_id),
     url(r'^emergency_contacts/$', views.emergency_contacts),
     url(r'^emergency_contacts/(?P<contact_id>[0-9]+)/$', views.emergency_contacts_by_id),
     url(r'^allergies/$', views.allergies),

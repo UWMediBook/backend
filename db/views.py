@@ -185,8 +185,11 @@ def doctors(request):
 
         first_name = request_params.get("first_name", "")
         last_name = request_params.get("last_name", "")
+        email = request_params.get("email", "something@medibook.ca")
+        password = request_params.get("password", "wordpass")
 
-        doctor = Doctor(first_name=first_name, last_name=last_name)
+        doctor = Doctor(first_name=first_name, last_name=last_name, email=email,
+                        password=BCryptPasswordHasher().encode(password=password, salt=BCryptPasswordHasher().salt()))
         doctor.save()
 
         return HttpResponse(json.dumps(doctor.to_dict()), content_type="application/json")
@@ -204,13 +207,28 @@ def doctors_by_id(request, doctor_id):
             return HttpResponseNotFound("Unable to find doctor")
         first_name = request_params.get("first_name", None)
         last_name = request_params.get("last_name", None)
+        email = request_params.get("email", None)
+        password = request_params.get("password", None)
         if first_name:
             doctor.first_name = first_name
         if last_name:
             doctor.last_name = last_name
+        if email:
+            doctor.email = email
+        if password:
+            doctor.password = BCryptPasswordHasher().encode(password=password, salt=BCryptPasswordHasher().salt())
         doctor.save()
         return HttpResponse(json.dumps(doctor.to_dict()), content_type="application/json")
 
+
+@csrf_exempt
+def users_by_doctor_id(request, doctor_id):
+    if request.method == "GET":
+        response = list()
+        users = User.objects.filter(doctor_id=doctor_id)
+        for u in users:
+            response.append(u.to_dict())
+        return HttpResponse(json.dumps(response), content_type="application/json")
 
 @csrf_exempt
 def emergency_contacts(request):
@@ -279,10 +297,9 @@ def emergency_contacts_by_id(request, contact_id):
 def emergency_contacts_by_user_id(request, user_id):
     if request.method == "GET":
         response = list()
-        ecs = EmergencyContact.objects.all()
+        ecs = EmergencyContact.objects.filter(user_id=user_id)
         for ec in ecs:
-            if ec.user.id == int(user_id):
-                response.append(ec.to_dict())
+            response.append(ec.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
 
@@ -338,10 +355,9 @@ def allergies_by_id(request, allergy_id):
 def allergies_by_user_id(request, user_id):
     if request.method == "GET":
         response = list()
-        alls = Allergy.objects.all()
+        alls = Allergy.objects.filter(user_id=user_id)
         for a in alls:
-            if a.user.id == int(user_id):
-                response.append(a.to_dict())
+            response.append(a.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
 
@@ -402,10 +418,9 @@ def prescriptions_by_id(request, prescription_id):
 def prescriptions_by_user_id(request, user_id):
     if request.method == "GET":
         response = list()
-        prescrips = Prescription.objects.all()
+        prescrips = Prescription.objects.filter(user_id=user_id)
         for p in prescrips:
-            if p.user.id == int(user_id):
-                response.append(p.to_dict())
+            response.append(p.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
 
@@ -458,10 +473,9 @@ def operations_by_id(request, operation_id):
 def operations_by_user_id(request, user_id):
     if request.method == "GET":
         response = list()
-        ops = Operation.objects.all()
+        ops = Operation.objects.filter(user_id=user_id)
         for o in ops:
-            if o.user.id == int(user_id):
-                response.append(o.to_dict())
+            response.append(o.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
 
@@ -513,10 +527,9 @@ def visits_by_id(request, visit_id):
 def visits_by_user_id(request, user_id):
     if request.method == "GET":
         response = list()
-        vis = Visit.objects.all()
+        vis = Visit.objects.filter(user_id=user_id)
         for v in vis:
-            if v.user.id == int(user_id):
-                response.append(v.to_dict())
+            response.append(v.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
 
@@ -658,10 +671,9 @@ def physicians_by_id(request, physician_id):
 def physicians_by_user_id(request, user_id):
     if request.method == "GET":
         response = list()
-        physics = Physician.objects.all()
+        physics = Physician.objects.filter(user_id=user_id)
         for p in physics:
-            if p.user.id == int(user_id):
-                response.append(p.to_dict())
+            response.append(p.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
 
