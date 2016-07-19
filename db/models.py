@@ -7,6 +7,8 @@ class Doctor(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
+    email = models.CharField(max_length=255, default="", unique=True)
+    password = models.CharField(max_length=255, default="wordpass")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -15,6 +17,8 @@ class Doctor(models.Model):
             id=self.id,
             first_name=self.first_name,
             last_name=self.last_name,
+            email=self.email,
+            password=self.password,
             created_at=time.mktime(self.created_at.timetuple()),
             updated_at=time.mktime(self.updated_at.timetuple())
         )
@@ -22,7 +26,7 @@ class Doctor(models.Model):
 
 class User(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
-    doctor = models.ForeignKey('Doctor', on_delete=models.CASCADE, related_name="doctor_users")
+    doctor = models.ForeignKey('Doctor', on_delete=models.CASCADE, related_name="doctor_users", null=True)
     first_name = models.CharField(max_length=30, default="")
     last_name = models.CharField(max_length=30, default="")
     address = models.CharField(max_length=200, default="")
@@ -51,7 +55,7 @@ class User(models.Model):
             email=self.email,
             password=self.password,
             healthcard=self.healthcard,
-            doctor=self.doctor.to_dict(),
+            doctor=self.doctor.to_dict() if self.doctor else None,
             created_at=time.mktime(self.created_at.timetuple()),
             updated_at=time.mktime(self.updated_at.timetuple())
         )
@@ -181,6 +185,28 @@ class DoctorNote(models.Model):
             operation=self.operation.to_dict() if self.operation else None,
             allergy=self.allergy.to_dict() if self.allergy else None,
             note=self.note,
+            created_at=time.mktime(self.created_at.timetuple()),
+            updated_at=time.mktime(self.updated_at.timetuple())
+        )
+
+class Physician(models.Model):
+    id = models.AutoField(primary_key=True, unique=True)
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_physicians")
+    first_name = models.CharField(max_length=30, default="")
+    last_name = models.CharField(max_length=30, default="")
+    phone_number = models.CharField(max_length=15, default="")
+    address = models.CharField(max_length=255, default="")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def to_dict(self):
+        return dict(
+            id=self.id,
+            user=self.user.to_dict(),
+            first_name=self.first_name,
+            last_name=self.last_name,
+            phone_number=self.phone_number,
+            address=self.address,
             created_at=time.mktime(self.created_at.timetuple()),
             updated_at=time.mktime(self.updated_at.timetuple())
         )

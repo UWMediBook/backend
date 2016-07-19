@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^users/(?P<user_id>[0-9]+)/operations/$', views.operations_by_user_id),
     url(r'^users/(?P<user_id>[0-9]+)/visits/$', views.visits_by_user_id),
     url(r'^users/(?P<user_id>[0-9]+)/prescriptions/$', views.prescriptions_by_user_id),
+    url(r'^users/(?P<user_id>[0-9]+)/physicians/$', views.physicians_by_user_id),
     url(r'^users/(?P<email>\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3})/$', views.users_by_email),
     url(r'^doctors/$', views.doctors),
     url(r'^doctors/(?P<doctor_id>[0-9]+)/$', views.doctors_by_id),
@@ -36,6 +37,8 @@ urlpatterns = [
     url(r'^operations/(?P<operation_id>[0-9]+)/$', views.operations_by_id),
     url(r'^visits/$', views.visits),
     url(r'^visits/(?P<visit_id>[0-9]+)/$', views.visits_by_id),
+    url(r'^physicians/$', views.physicians),
+    url(r'^physicians/(?P<physician_id>[0-9]+)/$', views.physicians_by_id),
     url(r'^doctor_notes/$', views.doctor_notes),
 
 ]

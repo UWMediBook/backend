@@ -9,6 +9,7 @@ import json
 from django.contrib.auth.hashers import BCryptPasswordHasher
 import random
 
+
 @csrf_exempt
 def authenticate(request):
     if request.method == "POST":
@@ -273,6 +274,7 @@ def emergency_contacts_by_id(request, contact_id):
 
         return HttpResponse(json.dumps(contact.to_dict()), content_type="application/json")
 
+
 @csrf_exempt
 def emergency_contacts_by_user_id(request, user_id):
     if request.method == "GET":
@@ -343,7 +345,6 @@ def allergies_by_user_id(request, user_id):
         return HttpResponse(json.dumps(response), content_type="application/json")
 
 
-
 @csrf_exempt
 def prescriptions(request):
     if request.method == "GET":
@@ -407,6 +408,7 @@ def prescriptions_by_user_id(request, user_id):
                 response.append(p.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
+
 @csrf_exempt
 def operations(request):
     if request.method == "GET":
@@ -462,6 +464,7 @@ def operations_by_user_id(request, user_id):
                 response.append(o.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
 
+
 @csrf_exempt
 def visits(request):
     if request.method == "GET":
@@ -515,6 +518,7 @@ def visits_by_user_id(request, user_id):
             if v.user.id == int(user_id):
                 response.append(v.to_dict())
         return HttpResponse(json.dumps(response), content_type="application/json")
+
 
 @csrf_exempt
 def doctor_notes(request):
@@ -590,6 +594,75 @@ def doctor_notes(request):
     elif request.method == "DELETE":
         # TODO: Implement this
         return HttpResponse(None, content_type="application/json")
+
+
+@csrf_exempt
+def physicians(request):
+    if request.method == "GET":
+        query = Physician.objects.all()
+        serialized_json = serializers.serialize("json", query)
+        return HttpResponse(serialized_json, content_type="application/json")
+    elif request.method == "PUT":
+        request_params = json.loads(request.body)
+        user_id = request_params.get("user_id", None)
+        if not user_id:
+            raise Exception("Invalid User ID")
+        user = User.objects.get(id=user_id)
+        if not user:
+            raise Exception("Invalid User")
+
+        first_name = request_params.get("first_name", "")
+        last_name = request_params.get("last_name", "")
+        phone_number = request_params.get("phone_number", "")
+        address = request_params.get("address", "")
+
+        physician = Physician(user=user, first_name=first_name, last_name=last_name, phone_number=phone_number,
+                              address=address)
+        physician.save()
+
+        return HttpResponse(json.dumps(physician.to_dict()), content_type="application/json")
+
+
+@csrf_exempt
+def physicians_by_id(request, physician_id):
+    if request.method == "GET":
+        physician = Physician.objects.get(id=physician_id)
+        if not physician:
+            return HttpResponseNotFound("Unable to find physician")
+        return HttpResponse(json.dumps(physician.to_dict()), content_type="application/json")
+    elif request.method == "POST":
+        request_params = json.loads(request.body)
+        physician = Physician.objects.get(id=physician_id)
+        if not physician:
+            return HttpResponseNotFound("Unable to find physician")
+
+        first_name = request_params.get("first_name", None)
+        last_name = request_params.get("last_name", None)
+        phone_number = request_params.get("phone_number", None)
+        address = request_params.get("address", None)
+
+        if first_name:
+            physician.first_name = first_name
+        if last_name:
+            physician.last_name = last_name
+        if phone_number:
+            physician.phone_number = phone_number
+        if address:
+            physician.address = address
+        physician.save()
+
+        return HttpResponse(json.dumps(physician.to_dict()), content_type="application/json")
+
+
+@csrf_exempt
+def physicians_by_user_id(request, user_id):
+    if request.method == "GET":
+        response = list()
+        physics = Physician.objects.all()
+        for p in physics:
+            if p.user.id == int(user_id):
+                response.append(p.to_dict())
+        return HttpResponse(json.dumps(response), content_type="application/json")
 
 
 """
