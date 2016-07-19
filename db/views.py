@@ -101,7 +101,6 @@ def users_by_id(request, user_id):
         address = request_params.get("address", None)
         gender = request_params.get("gender", None)
         birthday = request_params.get("birthday", None)
-        birthday = datetime.fromtimestamp(birthday)
         email = request_params.get("email", None)
         password = request_params.get("password", None)
         healthcard = request_params.get("healthcard", None)
@@ -120,6 +119,7 @@ def users_by_id(request, user_id):
         if gender:
             user.gender = gender
         if birthday:
+            birthday = datetime.fromtimestamp(birthday)
             user.birthday = birthday
         if email:
             user.email = email
