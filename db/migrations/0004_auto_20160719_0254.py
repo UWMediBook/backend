@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='doctor',
             name='email',
-            field=models.CharField(default=b'', max_length=255, unique=True),
+            field=models.CharField(default=b'', max_length=255),
         ),
         migrations.AddField(
             model_name='doctor',
